@@ -61,11 +61,82 @@ class ObjectDetector:
                 class_id = int(box.cls[0].cpu().numpy())
                 class_name = self.model.names[class_id]
                 
-                # Only keep classes of interest
-                if class_name in settings.CLASSES_OF_INTEREST:
-                    detections.append([int(x1), int(y1), int(x2), int(y2), confidence, class_id, class_name])
+                # Adjust confidence based on the class for more accurate classification
+                adjusted_confidence = confidence
+                
+                # Boost confidence for non-person objects to prevent misclassification
+                if class_name in ["backpack", "drone", "suitcase", "handbag"]:
+                    adjusted_confidence = min(confidence * 1.15, 1.0)  # Boost by 15% but cap at 1.0
+                
+                # Only keep classes of interest with sufficient confidence
+                if class_name in settings.CLASSES_OF_INTEREST and adjusted_confidence >= self.threshold:
+                    # Store the adjusted confidence for display
+                    detections.append([int(x1), int(y1), int(x2), int(y2), adjusted_confidence, class_id, class_name])
         
-        return detections
+        # Apply additional logic to resolve overlapping detections
+        # If a backpack/drone/suitcase significantly overlaps with a person, it may be being carried
+        filtered_detections = self._filter_overlapping_detections(detections)
+        
+        return filtered_detections
+        
+    def _filter_overlapping_detections(self, detections):
+        """
+        Filter out cases where objects are misidentified
+        
+        Args:
+            detections: List of [x1, y1, x2, y2, confidence, class_id, class_name]
+            
+        Returns:
+            list: Filtered list of detections
+        """
+        if len(detections) <= 1:
+            return detections
+            
+        filtered = []
+        items_to_check = []
+        
+        # First pass - separate persons from items
+        for detection in detections:
+            if detection[6] in ["backpack", "drone", "suitcase", "handbag", "umbrella", "cell phone"]:
+                items_to_check.append(detection)
+            else:
+                filtered.append(detection)
+        
+        # Second pass - check if items are overlapping with persons
+        for item in items_to_check:
+            item_x1, item_y1, item_x2, item_y2 = item[0:4]
+            item_area = (item_x2 - item_x1) * (item_y2 - item_y1)
+            is_overlapping = False
+            
+            for person in filtered:
+                if person[6] != "person":
+                    continue
+                    
+                person_x1, person_y1, person_x2, person_y2 = person[0:4]
+                
+                # Calculate intersection
+                x_left = max(item_x1, person_x1)
+                y_top = max(item_y1, person_y1)
+                x_right = min(item_x2, person_x2)
+                y_bottom = min(item_y2, person_y2)
+                
+                # Check if there is an intersection
+                if x_right < x_left or y_bottom < y_top:
+                    continue
+                    
+                intersection_area = (x_right - x_left) * (y_bottom - y_top)
+                overlap_ratio = intersection_area / item_area
+                
+                # If more than 70% of the item is inside the person, it's being carried
+                if overlap_ratio > 0.7:
+                    is_overlapping = True
+                    break
+            
+            # If the item is not significantly overlapping with a person, add it
+            if not is_overlapping:
+                filtered.append(item)
+                
+        return filtered
 
 class BehaviorAnalyzer:
     """Analyzes object behaviors to detect suspicious activities"""
@@ -74,6 +145,7 @@ class BehaviorAnalyzer:
         self.tracked_objects = {}  # Format: {id: {first_seen: timestamp, positions: [(x,y)], etc}}
         self.next_id = 0
         self.loitering_alerts = set()  # IDs of objects already alerted for loitering
+        self.drone_alerts = set()  # IDs of drones already alerted
     
     def update(self, detections, frame):
         """
@@ -199,6 +271,37 @@ class BehaviorAnalyzer:
                     alert = {
                         'type': 'crawling',
                         'message': "Person crawling detected",
+                        'confidence': obj_data['confidence'],
+                        'bbox': obj_data['bbox']
+                    }
+                    alerts.append(alert)
+            
+            # Check for drone presence
+            if obj_data['class_name'] == 'drone' and obj_id not in self.drone_alerts:
+                # Create an alert for drone detected
+                alert = {
+                    'type': 'drone',
+                    'message': "Suspicious drone detected",
+                    'confidence': obj_data['confidence'],
+                    'bbox': obj_data['bbox']
+                }
+                alerts.append(alert)
+                self.drone_alerts.add(obj_id)  # Mark as alerted
+                
+            # Check for abandoned items (backpack, suitcase, etc.)
+            if obj_data['class_name'] in ['backpack', 'suitcase', 'handbag'] and len(obj_data['positions']) > 15:
+                # Check if the item hasn't moved significantly
+                positions = obj_data['positions']
+                x_coords = [p[0] for p in positions[-15:]]  # Last 15 positions
+                y_coords = [p[1] for p in positions[-15:]]
+                
+                x_movement = max(x_coords) - min(x_coords)
+                y_movement = max(y_coords) - min(y_coords)
+                
+                if x_movement < 10 and y_movement < 10:  # Very little movement
+                    alert = {
+                        'type': 'abandoned_item',
+                        'message': f"Abandoned {obj_data['class_name']} detected",
                         'confidence': obj_data['confidence'],
                         'bbox': obj_data['bbox']
                     }

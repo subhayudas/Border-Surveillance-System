@@ -317,3 +317,273 @@
 2025-04-05 01:37:36,807 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013736.jpg
 2025-04-05 01:37:36,808 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
 2025-04-05 01:37:36,808 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:26:27,717 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:26:28,260 - BorderSurveillance - INFO - Surveillance system started (PID: 2688)
+2025-04-05 02:26:28,265 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 17144)
+2025-04-05 02:26:36,605 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:26:36,611 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:26:41,163 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:27:08,378 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 02:27:08,434 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 02:27:08,436 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:27:08,436 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:27:08,437 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:27:08,437 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:27:46,321 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022746.jpg
+2025-04-05 02:27:46,321 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022746.jpg
+2025-04-05 02:27:46,321 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:27:46,321 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:27:46,322 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,322 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,481 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,481 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,633 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,633 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,774 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,774 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,916 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:46,916 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,075 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,075 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,229 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,229 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,861 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022747.jpg
+2025-04-05 02:27:47,861 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022747.jpg
+2025-04-05 02:27:47,861 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:47,861 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,013 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,013 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,164 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,164 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,772 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,772 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,918 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022748.jpg
+2025-04-05 02:27:48,918 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-022748.jpg
+2025-04-05 02:27:48,918 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:48,918 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:27:55,887 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-022755.jpg
+2025-04-05 02:27:55,887 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-022755.jpg
+2025-04-05 02:27:55,888 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:27:55,888 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:27:55,889 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:27:55,889 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:28:35,846 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-022835.jpg
+2025-04-05 02:28:35,846 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-022835.jpg
+2025-04-05 02:28:35,848 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:28:35,848 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:32:43,796 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:32:44,363 - BorderSurveillance - INFO - Surveillance system started (PID: 8056)
+2025-04-05 02:32:44,368 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 8448)
+2025-04-05 02:32:52,573 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:32:52,588 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:32:57,258 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:33:24,305 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 02:33:24,336 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 02:33:24,338 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:33:24,338 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:33:24,338 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:33:24,338 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:34:01,745 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023401.jpg
+2025-04-05 02:34:01,745 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023401.jpg
+2025-04-05 02:34:01,746 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:34:01,746 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:34:01,746 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:34:01,746 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:34:04,122 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023404.jpg
+2025-04-05 02:34:04,122 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023404.jpg
+2025-04-05 02:34:04,124 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:34:04,124 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:35:20,369 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023520.jpg
+2025-04-05 02:35:20,369 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023520.jpg
+2025-04-05 02:35:20,370 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 32 seconds
+2025-04-05 02:35:20,370 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 32 seconds
+2025-04-05 02:35:22,098 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023522.jpg
+2025-04-05 02:35:22,098 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023522.jpg
+2025-04-05 02:35:22,100 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:35:22,100 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:37:11,573 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:37:11,933 - BorderSurveillance - INFO - Surveillance system started (PID: 6916)
+2025-04-05 02:37:11,937 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 9764)
+2025-04-05 02:37:19,256 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:37:19,271 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:37:23,741 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:37:49,655 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 02:37:49,719 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 02:37:49,722 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:37:49,722 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:37:49,723 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:37:49,723 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:38:26,298 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-023826.jpg
+2025-04-05 02:38:26,298 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-023826.jpg
+2025-04-05 02:38:26,298 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:38:26,298 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:38:26,299 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:38:26,299 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:38:38,257 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023838.jpg
+2025-04-05 02:38:38,257 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023838.jpg
+2025-04-05 02:38:38,258 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:38:38,258 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:38:38,258 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 02:38:38,258 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 02:38:38,259 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 02:38:38,259 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 02:38:46,677 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023846.jpg
+2025-04-05 02:38:46,677 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023846.jpg
+2025-04-05 02:38:46,678 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:38:46,678 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:38:52,072 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023852.jpg
+2025-04-05 02:38:52,072 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023852.jpg
+2025-04-05 02:38:52,073 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:38:52,073 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:38:55,174 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-023855.jpg
+2025-04-05 02:38:55,174 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\crawling_20250405-023855.jpg
+2025-04-05 02:38:55,175 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:38:55,175 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 02:39:41,657 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023941.jpg
+2025-04-05 02:39:41,657 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-023941.jpg
+2025-04-05 02:39:41,658 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:39:41,658 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:39:48,628 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 02:39:48,628 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 02:39:48,925 - BorderSurveillance - INFO - Surveillance system stopped after processing 873 frames
+2025-04-05 02:39:48,925 - BorderSurveillance - INFO - Surveillance system stopped after processing 873 frames
+2025-04-05 02:39:49,670 - BorderSurveillance - INFO - Shutdown signal received, terminating processes...
+2025-04-05 02:44:21,615 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:44:22,146 - BorderSurveillance - INFO - Surveillance system started (PID: 4748)
+2025-04-05 02:44:22,152 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 9720)
+2025-04-05 02:44:30,908 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:44:30,946 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:44:35,680 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:45:07,270 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 02:45:07,308 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 02:45:07,311 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:45:07,311 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:45:07,311 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:45:07,311 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:45:41,869 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024541.jpg
+2025-04-05 02:45:41,869 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024541.jpg
+2025-04-05 02:45:41,870 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:45:41,870 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:45:41,871 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 32 seconds
+2025-04-05 02:45:41,871 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 32 seconds
+2025-04-05 02:46:23,251 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024623.jpg
+2025-04-05 02:46:23,251 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024623.jpg
+2025-04-05 02:46:23,252 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:46:23,252 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:46:53,832 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024653.jpg
+2025-04-05 02:46:53,832 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024653.jpg
+2025-04-05 02:46:53,833 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:46:53,833 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:47:19,283 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024719.jpg
+2025-04-05 02:47:19,283 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-024719.jpg
+2025-04-05 02:47:19,285 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:47:19,285 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:52:35,903 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:52:37,155 - BorderSurveillance - INFO - UI Controls: Click the button or press 's' key to toggle between webcam and video file input
+2025-04-05 02:52:37,169 - BorderSurveillance - INFO - Surveillance system started (PID: 10156)
+2025-04-05 02:52:37,178 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 312)
+2025-04-05 02:52:48,222 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:52:53,227 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 02:53:28,535 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 02:53:28,536 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 02:53:28,595 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 02:53:28,599 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:53:28,599 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 02:53:28,600 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:53:28,600 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 02:57:34,276 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:57:34,276 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:57:34,743 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:57:34,743 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:57:44,052 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 02:57:44,052 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 02:58:21,379 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 02:58:21,379 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 02:59:14,939 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-025914.jpg
+2025-04-05 02:59:14,939 - BorderSurveillance - INFO - Saved alert snapshot to C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\output\snapshots\loitering_20250405-025914.jpg
+2025-04-05 02:59:14,941 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:59:14,941 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 02:59:14,941 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:59:14,941 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 02:59:57,822 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:59:57,822 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:59:58,134 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 02:59:58,134 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:01:31,340 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:01:31,890 - BorderSurveillance - INFO - UI Controls: Click the button or press 's' key to toggle between webcam and video file input
+2025-04-05 03:01:31,899 - BorderSurveillance - INFO - Surveillance system started (PID: 3800)
+2025-04-05 03:01:31,903 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 5944)
+2025-04-05 03:01:40,547 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:01:40,579 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:01:45,247 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:02:17,883 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 03:02:17,883 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 03:02:17,943 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 03:02:17,946 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:02:17,946 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:02:17,947 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:02:17,947 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:04:14,291 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/dance.mp4
+2025-04-05 03:04:14,291 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/dance.mp4
+2025-04-05 03:04:14,618 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/dance.mp4
+2025-04-05 03:04:14,618 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/dance.mp4
+2025-04-05 03:04:32,034 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 03:04:32,034 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 03:05:08,490 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 03:05:08,490 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 03:05:16,683 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:05:16,683 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:05:16,999 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:05:16,999 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:05:29,613 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 03:05:29,613 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 03:05:29,625 - BorderSurveillance - INFO - Surveillance system stopped after processing 94 frames
+2025-04-05 03:05:29,625 - BorderSurveillance - INFO - Surveillance system stopped after processing 94 frames
+2025-04-05 03:05:30,493 - BorderSurveillance - INFO - Shutdown signal received, terminating processes...
+2025-04-05 03:06:20,576 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:06:21,269 - BorderSurveillance - INFO - UI Controls: Click the button or press 's' key to toggle between webcam and video file input
+2025-04-05 03:06:21,279 - BorderSurveillance - INFO - Surveillance system started (PID: 3808)
+2025-04-05 03:06:21,288 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 5188)
+2025-04-05 03:06:31,028 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:06:35,694 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:07:05,902 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 03:07:05,904 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 03:07:05,949 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 03:07:05,952 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:07:05,952 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:07:05,953 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:07:05,953 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:07:36,026 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:07:36,026 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:07:36,335 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:07:36,335 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:07:44,688 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 03:07:44,688 - BorderSurveillance - INFO - Surveillance system interrupted by user
+2025-04-05 03:07:44,696 - BorderSurveillance - INFO - Surveillance system stopped after processing 64 frames
+2025-04-05 03:07:44,696 - BorderSurveillance - INFO - Surveillance system stopped after processing 64 frames
+2025-04-05 03:07:45,565 - BorderSurveillance - INFO - Shutdown signal received, terminating processes...
+2025-04-05 03:08:50,810 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:08:51,509 - BorderSurveillance - INFO - UI Controls: Click the button or press 's' key to toggle between webcam and video file input
+2025-04-05 03:08:51,524 - BorderSurveillance - INFO - Surveillance system started (PID: 16548)
+2025-04-05 03:08:51,537 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 10820)
+2025-04-05 03:09:01,318 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:09:01,357 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:09:06,174 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-04-05 03:09:42,468 - BorderSurveillance - INFO - Video source initialized: 0
+2025-04-05 03:09:42,468 - BorderSurveillance - INFO - Loading model from C:\Users\Pratyush Tripathi\OneDrive\Documents\Prat\Hackfest\Border-Surveillance-System\models\yolov8n.pt
+2025-04-05 03:09:42,523 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 03:09:42,529 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:09:42,529 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 03:09:42,530 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:09:42,530 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 03:09:56,996 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:09:56,996 - BorderSurveillance - INFO - Changing video source to: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:09:57,321 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:09:57,321 - BorderSurveillance - INFO - Video source initialized: C:/Users/Pratyush Tripathi/OneDrive/Documents/Prat/Hackfest/Border-Surveillance-System/drone.mp4
+2025-04-05 03:10:13,460 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 03:10:13,460 - BorderSurveillance - INFO - Changing video source to: 0
+2025-04-05 03:10:45,254 - BorderSurveillance - INFO - End of video stream reached
+2025-04-05 03:10:45,254 - BorderSurveillance - INFO - End of video stream reached
+2025-04-05 03:10:45,257 - BorderSurveillance - INFO - Surveillance system stopped after processing 116 frames
+2025-04-05 03:10:45,257 - BorderSurveillance - INFO - Surveillance system stopped after processing 116 frames
+2025-04-05 03:10:46,240 - BorderSurveillance - INFO - Shutdown signal received, terminating processes...
