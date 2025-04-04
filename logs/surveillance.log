@@ -1,0 +1,319 @@
+2025-04-04 23:40:11,079 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-04 23:40:11,483 - BorderSurveillance - INFO - Surveillance system started (PID: 5175)
+2025-04-04 23:40:11,485 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 5176)
+2025-04-04 23:40:13,087 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-04 23:40:13,087 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-04 23:40:13,220 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [Errno 61] Connection refused
+2025-04-04 23:40:13,357 - BorderSurveillance - ERROR - Error in surveillance system: Failed to open video source: 0
+2025-04-04 23:56:29,315 - BorderSurveillance - INFO - Shutdown signal received, terminating processes...
+2025-04-05 00:11:22,807 - BorderSurveillance - INFO - Surveillance system started (PID: 5980)
+2025-04-05 00:11:26,005 - BorderSurveillance - INFO - Model not found at /Users/ayushagarwal/Desktop/Border-Surveillance-System/models/yolov8n.pt, downloading YOLOv8n...
+2025-04-05 00:11:45,394 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 00:11:45,396 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 00:11:45,396 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 00:11:45,396 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 00:11:45,396 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 00:12:08,779 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001208.jpg
+2025-04-05 00:12:08,779 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001208.jpg
+2025-04-05 00:12:08,779 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:08,779 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:08,971 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:08,971 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:09,075 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:09,075 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:11,476 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001211.jpg
+2025-04-05 00:12:11,476 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001211.jpg
+2025-04-05 00:12:11,476 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:11,476 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,378 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001214.jpg
+2025-04-05 00:12:14,378 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001214.jpg
+2025-04-05 00:12:14,378 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,378 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,475 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,475 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,574 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,574 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,683 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,683 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,768 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,768 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,873 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:14,873 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,083 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,083 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,175 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,175 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,283 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:15,283 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:18,985 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001218.jpg
+2025-04-05 00:12:18,985 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001218.jpg
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:18,986 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:25,689 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001225.jpg
+2025-04-05 00:12:25,689 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001225.jpg
+2025-04-05 00:12:25,689 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:25,689 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:31,789 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001231.jpg
+2025-04-05 00:12:31,789 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001231.jpg
+2025-04-05 00:12:31,790 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:31,790 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:31,878 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:31,878 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:31,991 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:31,991 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,085 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,085 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,187 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,187 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,287 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,287 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,387 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,387 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,487 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,487 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,587 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,587 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,688 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,688 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,787 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,787 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,889 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001232.jpg
+2025-04-05 00:12:32,889 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001232.jpg
+2025-04-05 00:12:32,890 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,890 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,982 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:32,982 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:48,201 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001248.jpg
+2025-04-05 00:12:48,201 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001248.jpg
+2025-04-05 00:12:48,201 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 00:12:48,201 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 31 seconds
+2025-04-05 00:12:57,603 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001257.jpg
+2025-04-05 00:12:57,603 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001257.jpg
+2025-04-05 00:12:57,604 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:57,604 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:12:58,100 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:58,100 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:59,603 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001259.jpg
+2025-04-05 00:12:59,603 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001259.jpg
+2025-04-05 00:12:59,603 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:12:59,603 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:00,553 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:00,553 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,199 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001302.jpg
+2025-04-05 00:13:02,199 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001302.jpg
+2025-04-05 00:13:02,199 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,199 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,369 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,369 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,461 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,461 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,541 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,541 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,655 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,655 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,759 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,759 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,849 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:02,849 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,022 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,022 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,100 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,100 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,198 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,198 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,278 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001303.jpg
+2025-04-05 00:13:03,278 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001303.jpg
+2025-04-05 00:13:03,278 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,278 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,363 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,363 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,454 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,454 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,533 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,533 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,629 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,629 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,709 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,709 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,801 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,801 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,883 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,883 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,966 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:03,966 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,062 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,062 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,234 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,234 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,318 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001304.jpg
+2025-04-05 00:13:04,318 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001304.jpg
+2025-04-05 00:13:04,318 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,318 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,398 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,398 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,488 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,488 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,580 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,580 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,659 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,659 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,754 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,754 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,829 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,829 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,922 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:04,922 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,015 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,015 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,092 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,092 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,184 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,184 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,263 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,263 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,365 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001305.jpg
+2025-04-05 00:13:05,365 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001305.jpg
+2025-04-05 00:13:05,365 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,365 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,627 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,627 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,751 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,751 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,883 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:05,883 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,011 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,011 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,143 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,143 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,271 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,271 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,403 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001306.jpg
+2025-04-05 00:13:06,403 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001306.jpg
+2025-04-05 00:13:06,403 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,403 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,533 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,533 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,659 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,659 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,917 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:06,917 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,385 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001334.jpg
+2025-04-05 00:13:34,385 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001334.jpg
+2025-04-05 00:13:34,386 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,386 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,724 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,724 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,819 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,819 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,897 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,897 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,991 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:34,991 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,421 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001335.jpg
+2025-04-05 00:13:35,421 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001335.jpg
+2025-04-05 00:13:35,421 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,421 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,505 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,505 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,596 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,596 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,679 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,679 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,768 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,768 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,850 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:35,850 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,240 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001337.jpg
+2025-04-05 00:13:37,240 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-001337.jpg
+2025-04-05 00:13:37,240 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,240 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,316 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,316 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,591 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,591 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 00:13:37,722 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:13:37,722 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:10,394 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001410.jpg
+2025-04-05 00:14:10,394 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001410.jpg
+2025-04-05 00:14:10,395 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:10,395 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:13,801 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001413.jpg
+2025-04-05 00:14:13,801 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001413.jpg
+2025-04-05 00:14:13,801 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:13,801 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:17,844 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001417.jpg
+2025-04-05 00:14:17,844 - BorderSurveillance - INFO - Saved alert snapshot to /Users/ayushagarwal/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-001417.jpg
+2025-04-05 00:14:17,844 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 00:14:17,844 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:35:01,975 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 01:35:02,382 - BorderSurveillance - INFO - Surveillance system started (PID: 22643)
+2025-04-05 01:35:02,386 - BorderSurveillance - INFO - Dashboard API started at http://0.0.0.0:8000 (PID: 22644)
+2025-04-05 01:35:04,526 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 01:35:04,573 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 01:35:04,913 - BorderSurveillance - ERROR - Failed to initialize MQTT client: [Errno 61] Connection refused
+2025-04-05 01:35:06,604 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 01:35:06,663 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 01:35:06,665 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 01:35:06,665 - BorderSurveillance - INFO - Surveillance system initialized successfully
+2025-04-05 01:35:06,666 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 01:35:06,666 - BorderSurveillance - INFO - Starting surveillance system
+2025-04-05 01:35:15,199 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013515.jpg
+2025-04-05 01:35:15,199 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013515.jpg
+2025-04-05 01:35:15,200 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 01:35:15,200 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 01:35:15,200 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:15,200 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:16,393 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013516.jpg
+2025-04-05 01:35:16,393 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013516.jpg
+2025-04-05 01:35:16,393 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:16,393 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:16,791 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:16,791 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:17,061 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:17,061 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:46,887 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013546.jpg
+2025-04-05 01:35:46,887 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013546.jpg
+2025-04-05 01:35:46,888 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 01:35:46,888 - BorderSurveillance - INFO - Dashboard alert published to border/alerts
+2025-04-05 01:35:46,888 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:35:46,888 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:35:47,810 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:47,810 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:47,945 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013547.jpg
+2025-04-05 01:35:47,945 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013547.jpg
+2025-04-05 01:35:47,946 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:35:47,946 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:03,974 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013603.jpg
+2025-04-05 01:36:03,974 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013603.jpg
+2025-04-05 01:36:03,975 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:03,975 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,102 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,102 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,238 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,238 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,640 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:04,640 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:36:17,836 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013617.jpg
+2025-04-05 01:36:17,836 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013617.jpg
+2025-04-05 01:36:17,837 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:36:17,837 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:36:57,336 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013657.jpg
+2025-04-05 01:36:57,336 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/loitering_20250405-013657.jpg
+2025-04-05 01:36:57,338 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:36:57,338 - BorderSurveillance - WARNING - ALERT: loitering - Person loitering detected for 30 seconds
+2025-04-05 01:37:13,715 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013713.jpg
+2025-04-05 01:37:13,715 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013713.jpg
+2025-04-05 01:37:13,716 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:37:13,716 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:37:33,111 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013733.jpg
+2025-04-05 01:37:33,111 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013733.jpg
+2025-04-05 01:37:33,112 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:37:33,112 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:37:36,807 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013736.jpg
+2025-04-05 01:37:36,807 - BorderSurveillance - INFO - Saved alert snapshot to /Users/subhayudas/Desktop/Border-Surveillance-System/output/snapshots/crawling_20250405-013736.jpg
+2025-04-05 01:37:36,808 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected
+2025-04-05 01:37:36,808 - BorderSurveillance - WARNING - ALERT: crawling - Person crawling detected

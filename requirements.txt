@@ -1,0 +1,15 @@
+numpy>=1.19.0
+opencv-python>=4.5.0
+torch>=1.9.0
+torchvision>=0.10.0
+ultralytics>=8.0.0  # For YOLOv8
+scipy>=1.7.0
+pillow>=8.2.0
+matplotlib>=3.4.0
+scikit-learn>=0.24.0
+paho-mqtt>=1.5.0  # For alert notifications
+fastapi>=0.70.0  # For API/dashboard backend
+uvicorn>=0.15.0  # ASGI server for FastAPI
+python-dotenv>=0.19.0
+twilio>=7.0.0  # For SMS notifications
+schedule>=1.1.0  # For scheduled tasks 
