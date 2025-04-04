@@ -11,21 +11,35 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 
 # Camera and video settings
 VIDEO_SOURCE = os.getenv("VIDEO_SOURCE", 0)  # Default to webcam (0)
-FRAME_WIDTH = int(os.getenv("FRAME_WIDTH", 640))
-FRAME_HEIGHT = int(os.getenv("FRAME_HEIGHT", 480))
+# Fixed resolution for consistent aspect ratio
+FRAME_WIDTH = 640
+FRAME_HEIGHT = 480
+DISPLAY_WIDTH = 640  # Fixed display width
+DISPLAY_HEIGHT = 480  # Fixed display height
 FPS = int(os.getenv("FPS", 20))
 
 # Detection settings
 DETECTION_THRESHOLD = float(os.getenv("DETECTION_THRESHOLD", 0.5))
+
+# Classes of interest for detection
 CLASSES_OF_INTEREST = [
-    "person", 
-    "car", 
-    "truck", 
-    "motorcycle", 
-    "bicycle", 
-    "drone",
-    "backpack",
-    "suitcase"
+    'person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck',
+    'backpack', 'suitcase', 'knife', 'gun', 'rifle', 'drone'
+]
+
+# Border crossing detection settings
+BORDER_LINES = [
+    {
+        'id': 'main_border',
+        'points': [(0, FRAME_HEIGHT // 2), (FRAME_WIDTH, FRAME_HEIGHT // 2)],
+        'direction': 'both'  # 'north_to_south', 'south_to_north', or 'both'
+    },
+    # Example of a diagonal border
+    {
+        'id': 'northeast_border',
+        'points': [(0, FRAME_HEIGHT), (FRAME_WIDTH, 0)],
+        'direction': 'north_to_south'
+    }
 ]
 
 # Fence tampering detection settings
@@ -71,4 +85,4 @@ MAX_BATCH_SIZE = int(os.getenv("MAX_BATCH_SIZE", 1))
 
 # Logging settings
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-LOG_FILE = os.path.join(BASE_DIR, "logs", "surveillance.log") 
+LOG_FILE = os.path.join(BASE_DIR, "logs", "surveillance.log")

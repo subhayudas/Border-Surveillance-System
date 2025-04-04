@@ -19,6 +19,11 @@ class Visualizer:
             'fence_tampering': (0, 0, 255),  # Red
             'loitering': (0, 255, 255),      # Yellow
             'crawling': (255, 0, 255),       # Magenta
+            'knife': (0, 0, 255),            # Red
+            'gun': (255, 0, 0),              # Blue (bright)
+            'rifle': (255, 0, 0),            # Blue (bright)
+            'weapon': (255, 0, 0),           # Blue (bright)
+            'border_crossing': (255, 0, 0),  # Red (bright)
             'default': (200, 200, 200)       # Gray
         }
         
@@ -260,4 +265,92 @@ class Visualizer:
                 1
             )
         
-        return snapshot 
+        return snapshot
+    
+    def draw_border_lines(self, frame, border_lines):
+        """
+        Draw border lines on the frame
+        
+        Args:
+            frame: OpenCV image to draw on
+            border_lines: List of border line definitions
+            
+        Returns:
+            frame: The image with border lines drawn
+        """
+        for border in border_lines:
+            points = border['points']
+            border_id = border.get('id', 'default')
+            direction = border.get('direction', 'both')
+            
+            # Draw the border line
+            cv2.line(
+                frame,
+                (points[0][0], points[0][1]),
+                (points[1][0], points[1][1]),
+                (0, 0, 255),  # Red color for borders
+                2,
+                cv2.LINE_AA
+            )
+            
+            # Add border label
+            mid_x = (points[0][0] + points[1][0]) // 2
+            mid_y = (points[0][1] + points[1][1]) // 2
+            
+            # Add a small offset to the label position
+            label_offset_x = 5
+            label_offset_y = -10
+            
+            # Create label text
+            label = f"Border: {border_id}"
+            
+            # Draw label background
+            (label_width, label_height), _ = cv2.getTextSize(
+                label, self.font, self.font_scale, self.font_thickness
+            )
+            
+            cv2.rectangle(
+                frame,
+                (mid_x + label_offset_x, mid_y + label_offset_y - label_height - 5),
+                (mid_x + label_offset_x + label_width + 5, mid_y + label_offset_y),
+                (0, 0, 255),
+                -1
+            )
+            
+            # Draw label text
+            cv2.putText(
+                frame,
+                label,
+                (mid_x + label_offset_x + 3, mid_y + label_offset_y - 4),
+                self.font,
+                self.font_scale,
+                (255, 255, 255),
+                self.font_thickness
+            )
+            
+            # Draw direction indicators
+            if direction == 'north_to_south' or direction == 'both':
+                # Draw arrow pointing south
+                cv2.arrowedLine(
+                    frame,
+                    (mid_x + 20, mid_y - 10),
+                    (mid_x + 20, mid_y + 10),
+                    (0, 0, 255),
+                    1,
+                    cv2.LINE_AA,
+                    tipLength=0.3
+                )
+            
+            if direction == 'south_to_north' or direction == 'both':
+                # Draw arrow pointing north
+                cv2.arrowedLine(
+                    frame,
+                    (mid_x - 20, mid_y + 10),
+                    (mid_x - 20, mid_y - 10),
+                    (0, 0, 255),
+                    1,
+                    cv2.LINE_AA,
+                    tipLength=0.3
+                )
+        
+        return frame

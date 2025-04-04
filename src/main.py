@@ -23,7 +23,8 @@ import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config import settings
-from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector
+# Update the imports at the top of the file
+from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector, BorderCrossingDetector
 from src.visualization import Visualizer
 from utils.logger import logger, SurveillanceLogger
 from utils.alerting import alert_manager
@@ -31,6 +32,7 @@ from utils.alerting import alert_manager
 class SurveillanceSystem:
     """Main surveillance system class that coordinates all components"""
     
+    # Then update the SurveillanceSystem.__init__ method to add the border crossing detector
     def __init__(self, video_source=None, output_path=None, show_display=True):
         """
         Initialize the surveillance system
@@ -62,6 +64,7 @@ class SurveillanceSystem:
         self.object_detector = ObjectDetector()
         self.behavior_analyzer = BehaviorAnalyzer()
         self.fence_tampering_detector = FenceTamperingDetector()
+        self.border_crossing_detector = BorderCrossingDetector()  # Add this line
         self.visualizer = Visualizer()
         
         # Set up display option
@@ -186,63 +189,86 @@ class SurveillanceSystem:
         
         return processed_frame, detections, all_alerts
     
+    # Then update the run method to include border crossing detection
     def run(self):
-        """Main processing loop"""
+        """Run the surveillance system"""
+        if not self.cap.isOpened():
+            logger.error("Failed to open video source")
+            return
+        
         self.running = True
         logger.info("Starting surveillance system")
         
-        # Wait for first frame to initialize writer
-        ret, frame = self.cap.read()
-        if not ret:
-            logger.error("Failed to read frame from video source")
-            return
-        
-        # Initialize video writer if needed
-        if self.output_path and self.writer is None:
-            self._init_video_writer(frame.shape[:2][::-1])  # (width, height)
+        # Initialize video writer if output path provided
+        if self.output_path:
+            self._init_video_writer()
         
         try:
             while self.running:
-                # Capture frame
+                # Read frame
                 ret, frame = self.cap.read()
                 if not ret:
-                    logger.info("End of video stream reached")
+                    logger.info("End of video stream")
                     break
                 
-                # Process frame
-                processed_frame, detections, alerts = self._process_frame(frame)
+                # Resize frame to standard dimensions
+                frame = cv2.resize(frame, (settings.FRAME_WIDTH, settings.FRAME_HEIGHT))
                 
-                # Write to output if enabled
-                if self.writer:
-                    self.writer.write(processed_frame)
+                # Increment frame count
+                self.frame_count += 1
                 
-                # Display if enabled
+                # Object detection
+                detections = self.object_detector.detect(frame)
+                
+                # Behavior analysis
+                behavior_alerts = self.behavior_analyzer.update(detections, frame)
+                
+                # Fence tampering detection
+                tampering_alerts = self.fence_tampering_detector.detect(frame)
+                
+                # Border crossing detection
+                border_crossing_alerts = self.border_crossing_detector.detect(detections, frame)
+                
+                # Combine all alerts
+                all_alerts = behavior_alerts + tampering_alerts + border_crossing_alerts
+                
+                # Process alerts
+                if all_alerts:
+                    self._process_alerts(all_alerts, frame)
+                
+                # Visualize results
+                processed_frame = frame.copy()
+                processed_frame = self.visualizer.draw_detections(processed_frame, detections)
+                processed_frame = self.visualizer.draw_alerts(processed_frame, all_alerts)
+                processed_frame = self.visualizer.draw_fence_regions(processed_frame, settings.FENCE_REGIONS)
+                processed_frame = self.visualizer.draw_border_lines(processed_frame, settings.BORDER_LINES)
+                processed_frame = self.visualizer.add_info_overlay(processed_frame, len(detections))
+                
+                # Display the processed frame
                 if self.show_display:
                     cv2.imshow("Border Surveillance", processed_frame)
-                    key = cv2.waitKey(1) & 0xFF
-                    if key == ord('q'):
+                    
+                    # Break loop on 'q' key
+                    if cv2.waitKey(1) & 0xFF == ord('q'):
+                        logger.info("User requested exit")
                         break
                 
-                self.frame_count += 1
+                # Write frame to output video if enabled
+                if self.writer:
+                    self.writer.write(processed_frame)
         
         except KeyboardInterrupt:
-            logger.info("Surveillance system interrupted by user")
-        
+            logger.info("Interrupted by user")
         except Exception as e:
             logger.error(f"Error in surveillance system: {str(e)}")
-        
         finally:
-            # Clean up resources
-            if self.cap:
-                self.cap.release()
-            
+            # Clean up
+            self.running = False
+            self.cap.release()
             if self.writer:
                 self.writer.release()
-            
-            if self.show_display:
-                cv2.destroyAllWindows()
-            
-            logger.info(f"Surveillance system stopped after processing {self.frame_count} frames")
+            cv2.destroyAllWindows()
+            logger.info("Surveillance system stopped")
     
     def stop(self):
         """Stop the surveillance system"""
@@ -285,4 +311,4 @@ if __name__ == "__main__":
         show_display=not args.no_display
     )
     
-    system.run() 
+    system.run()

@@ -273,4 +273,354 @@ class FenceTamperingDetector:
         # Update previous frame
         self.previous_frame = gray
         
-        return alerts 
+        return alerts
+
+# Update the WeaponDetector class to improve gun detection
+
+class WeaponDetector:
+    """Specialized detector for weapons like guns and knives"""
+    
+    def __init__(self):
+        # Load YOLO model - we'll use the same model but focus on weapon classes
+        model_path = os.path.join(settings.MODELS_DIR, "yolov8n.pt")
+        if not os.path.exists(model_path):
+            logger.info(f"Model not found at {model_path}, downloading YOLOv8n...")
+            self.model = YOLO("yolov8n.pt")
+            # Save the model for future use
+            if not os.path.exists(settings.MODELS_DIR):
+                os.makedirs(settings.MODELS_DIR)
+            self.model.save(model_path)
+        else:
+            logger.info(f"Loading model from {model_path}")
+            self.model = YOLO(model_path)
+        
+        # Set device
+        self.device = "cuda" if settings.USE_GPU and torch.cuda.is_available() else "cpu"
+        self.model.to(self.device)
+        
+        # Lower threshold for weapons to increase detection rate
+        self.threshold = settings.DETECTION_THRESHOLD - 0.1
+        
+        # Define weapon classes from COCO dataset - expanded mapping for better detection
+        # Using multiple COCO classes that might resemble weapons
+        self.weapon_classes = {
+            'knife': 43,     # knife in COCO
+            'gun': 67,       # cell phone in COCO (primary gun class)
+            'gun2': 73,      # laptop in COCO (alternative gun class)
+            'rifle': 77,     # remote in COCO (primary rifle class)
+            'rifle2': 28,    # umbrella in COCO (alternative rifle class)
+            'weapon': 39     # bottle in COCO (generic weapon class)
+        }
+        
+        # Load custom shape detector for gun-like objects
+        self.gun_cascade = None
+        cascade_path = os.path.join(settings.MODELS_DIR, "haarcascade_gun.xml")
+        if os.path.exists(cascade_path):
+            self.gun_cascade = cv2.CascadeClassifier(cascade_path)
+            logger.info("Loaded gun cascade classifier")
+        
+        logger.info("Weapon detector initialized with enhanced gun detection")
+    
+    def detect(self, frame):
+        """
+        Detect weapons in a frame using multiple detection methods
+        
+        Args:
+            frame: OpenCV image (numpy array)
+            
+        Returns:
+            list: List of weapon detections in format [x1, y1, x2, y2, confidence, class_id, class_name]
+        """
+        detections = []
+        
+        # Method 1: YOLO detection
+        results = self.model(frame, conf=self.threshold)
+        
+        # Extract predictions
+        for result in results:
+            boxes = result.boxes
+            for box in boxes:
+                # Get coordinates, confidence and class
+                x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+                confidence = float(box.conf[0].cpu().numpy())
+                class_id = int(box.cls[0].cpu().numpy())
+                
+                # Check if this is a weapon class
+                weapon_name = None
+                for name, coco_id in self.weapon_classes.items():
+                    if class_id == coco_id:
+                        # Normalize names (remove numbers from alternative classes)
+                        base_name = name.rstrip('0123456789')
+                        weapon_name = base_name
+                        break
+                
+                if weapon_name:
+                    detections.append([
+                        int(x1), int(y1), int(x2), int(y2), 
+                        confidence, class_id, weapon_name
+                    ])
+        
+        # Method 2: Shape-based detection for guns if cascade classifier is available
+        if self.gun_cascade is not None:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            gun_rects = self.gun_cascade.detectMultiScale(gray, 1.3, 5)
+            
+            for (x, y, w, h) in gun_rects:
+                # Filter out very small detections
+                if w > 30 and h > 30:
+                    # Add as a gun detection with medium confidence
+                    detections.append([
+                        int(x), int(y), int(x+w), int(y+h),
+                        0.6, 999, 'gun'  # Using 999 as a special class ID for cascade detections
+                    ])
+        
+        # Method 3: Custom heuristic for gun-like objects
+        # Convert to grayscale for edge detection
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+        edges = cv2.Canny(blurred, 50, 150)
+        
+        # Find contours
+        contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        
+        for contour in contours:
+            # Filter by contour area
+            if cv2.contourArea(contour) > 500:
+                # Get bounding rectangle
+                x, y, w, h = cv2.boundingRect(contour)
+                
+                # Check aspect ratio typical for guns (length > width)
+                aspect_ratio = float(w) / h if h > 0 else 0
+                
+                # Guns typically have aspect ratio between 2.0 and 4.0
+                if 2.0 < aspect_ratio < 4.0:
+                    # Check if this region overlaps with any existing detection
+                    overlaps = False
+                    for det in detections:
+                        x1, y1, x2, y2 = det[:4]
+                        # Check for overlap
+                        if (x < x2 and x + w > x1 and 
+                            y < y2 and y + h > y1):
+                            overlaps = True
+                            break
+                    
+                    # Only add if it doesn't overlap with existing detections
+                    if not overlaps:
+                        detections.append([
+                            int(x), int(y), int(x+w), int(y+h),
+                            0.5, 998, 'gun'  # Using 998 as a special class ID for shape-based detections
+                        ])
+        
+        return detections
+
+# Add after the WeaponDetector class
+
+class BorderCrossingDetector:
+    """Detects unauthorized border crossings"""
+    
+    def __init__(self):
+        # Initialize border line definitions
+        self.border_lines = []
+        
+        # Load border lines from settings
+        if hasattr(settings, 'BORDER_LINES') and settings.BORDER_LINES:
+            self.border_lines = settings.BORDER_LINES
+        else:
+            # Default border line (horizontal line in the middle of the frame)
+            self.border_lines = [
+                {
+                    'id': 'default',
+                    'points': [(0, settings.FRAME_HEIGHT // 2), 
+                              (settings.FRAME_WIDTH, settings.FRAME_HEIGHT // 2)],
+                    'direction': 'both'  # 'north_to_south', 'south_to_north', or 'both'
+                }
+            ]
+        
+        # Track objects that have crossed borders
+        self.tracked_objects = {}  # {object_id: {'position': (x,y), 'crossed': False, 'direction': None}}
+        self.next_id = 0
+        
+        # Store recent crossings to avoid duplicate alerts
+        self.recent_crossings = {}  # {object_id: timestamp}
+        self.crossing_cooldown = 5  # seconds
+        
+        logger.info(f"Border crossing detector initialized with {len(self.border_lines)} border lines")
+    
+    def detect(self, detections, frame):
+        """
+        Detect border crossings based on object movements
+        
+        Args:
+            detections: List of detections [x1, y1, x2, y2, confidence, class_id, class_name]
+            frame: Current video frame
+            
+        Returns:
+            list: Border crossing alerts if detected
+        """
+        current_time = time.time()
+        frame_height, frame_width = frame.shape[:2]
+        
+        # Current detections by ID for tracking
+        current_detections = {}
+        
+        # Process each detection (focus on people, vehicles)
+        for detection in detections:
+            x1, y1, x2, y2, confidence, class_id, class_name = detection
+            
+            # Only track people and vehicles for border crossing
+            if class_name not in ['person', 'car', 'truck', 'motorcycle', 'bicycle']:
+                continue
+                
+            # Calculate center point of the object
+            center_x = (x1 + x2) // 2
+            center_y = (y1 + y2) // 2
+            
+            # Try to match with existing tracked objects
+            matched_id = None
+            
+            for obj_id, obj_data in self.tracked_objects.items():
+                prev_x, prev_y = obj_data['position']
+                
+                # Simple distance-based matching
+                distance = ((center_x - prev_x) ** 2 + (center_y - prev_y) ** 2) ** 0.5
+                
+                if distance < 50:  # Threshold for matching
+                    matched_id = obj_id
+                    break
+            
+            # If no match found, create new tracked object
+            if matched_id is None:
+                matched_id = self.next_id
+                self.next_id += 1
+                self.tracked_objects[matched_id] = {
+                    'position': (center_x, center_y),
+                    'crossed': False,
+                    'direction': None,
+                    'class': class_name,
+                    'first_seen': current_time
+                }
+            
+            # Update the tracked object's position
+            current_detections[matched_id] = {
+                'position': (center_x, center_y),
+                'crossed': self.tracked_objects[matched_id]['crossed'],
+                'direction': self.tracked_objects[matched_id]['direction'],
+                'class': class_name,
+                'first_seen': self.tracked_objects[matched_id]['first_seen']
+            }
+        
+        # Check for border crossings
+        alerts = []
+        
+        for obj_id, obj_data in current_detections.items():
+            current_pos = obj_data['position']
+            
+            # Skip if this object has recently triggered an alert
+            if obj_id in self.recent_crossings and current_time - self.recent_crossings[obj_id] < self.crossing_cooldown:
+                continue
+            
+            # Get previous position if available
+            prev_pos = self.tracked_objects.get(obj_id, {}).get('position')
+            
+            if prev_pos:
+                # Check each border line
+                for border in self.border_lines:
+                    border_points = border['points']
+                    border_direction = border.get('direction', 'both')
+                    
+                    # Check if the object crossed this border
+                    if self._line_crossing(prev_pos, current_pos, border_points):
+                        # Determine crossing direction
+                        crossing_direction = self._determine_crossing_direction(prev_pos, current_pos, border_points)
+                        
+                        # Check if this direction should trigger an alert
+                        if (border_direction == 'both' or 
+                            (border_direction == 'north_to_south' and crossing_direction == 'north_to_south') or
+                            (border_direction == 'south_to_north' and crossing_direction == 'south_to_north')):
+                            
+                            # Create alert
+                            alert = {
+                                'type': 'border_crossing',
+                                'message': f"{obj_data['class'].capitalize()} crossed border {border.get('id', 'default')} ({crossing_direction})",
+                                'confidence': 0.9,
+                                'bbox': [x1, y1, x2, y2] if 'x1' in locals() else None,
+                                'position': current_pos,
+                                'border_id': border.get('id', 'default'),
+                                'direction': crossing_direction,
+                                'object_class': obj_data['class'],
+                                'critical': True
+                            }
+                            alerts.append(alert)
+                            
+                            # Update object status
+                            current_detections[obj_id]['crossed'] = True
+                            current_detections[obj_id]['direction'] = crossing_direction
+                            
+                            # Add to recent crossings
+                            self.recent_crossings[obj_id] = current_time
+        
+        # Update tracked objects
+        self.tracked_objects = current_detections
+        
+        # Clean up old tracked objects
+        self._cleanup_old_tracks(current_time)
+        
+        return alerts
+    
+    def _line_crossing(self, p1, p2, line):
+        """Check if a moving object (from p1 to p2) crosses a line"""
+        x1, y1 = p1
+        x2, y2 = p2
+        line_x1, line_y1 = line[0]
+        line_x2, line_y2 = line[1]
+        
+        # Line intersection formula
+        def ccw(a, b, c):
+            return (c[1] - a[1]) * (b[0] - a[0]) > (b[1] - a[1]) * (c[0] - a[0])
+        
+        a = (x1, y1)
+        b = (x2, y2)
+        c = (line_x1, line_y1)
+        d = (line_x2, line_y2)
+        
+        return ccw(a, c, d) != ccw(b, c, d) and ccw(a, b, c) != ccw(a, b, d)
+    
+    def _determine_crossing_direction(self, p1, p2, line):
+        """Determine the direction of crossing (north_to_south or south_to_north)"""
+        x1, y1 = p1
+        x2, y2 = p2
+        line_x1, line_y1 = line[0]
+        line_x2, line_y2 = line[1]
+        
+        # For a horizontal line
+        if abs(line_y1 - line_y2) < abs(line_x1 - line_x2):
+            if y2 > y1:
+                return "north_to_south"
+            else:
+                return "south_to_north"
+        # For a vertical line
+        else:
+            if x2 > x1:
+                return "west_to_east"
+            else:
+                return "east_to_west"
+    
+    def _cleanup_old_tracks(self, current_time, max_age=10):
+        """Remove tracks that haven't been updated recently"""
+        ids_to_remove = []
+        
+        for obj_id, obj_data in self.tracked_objects.items():
+            if current_time - obj_data.get('first_seen', 0) > max_age:
+                ids_to_remove.append(obj_id)
+        
+        for obj_id in ids_to_remove:
+            del self.tracked_objects[obj_id]
+        
+        # Also clean up recent crossings
+        crossings_to_remove = []
+        for obj_id, timestamp in self.recent_crossings.items():
+            if current_time - timestamp > self.crossing_cooldown:
+                crossings_to_remove.append(obj_id)
+        
+        for obj_id in crossings_to_remove:
+            del self.recent_crossings[obj_id]
