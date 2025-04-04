@@ -16,7 +16,7 @@ FRAME_HEIGHT = int(os.getenv("FRAME_HEIGHT", 480))
 FPS = int(os.getenv("FPS", 20))
 
 # Detection settings
-DETECTION_THRESHOLD = float(os.getenv("DETECTION_THRESHOLD", 0.5))
+DETECTION_THRESHOLD = float(os.getenv("DETECTION_THRESHOLD", 0.65))
 CLASSES_OF_INTEREST = [
     "person", 
     "car", 
@@ -24,8 +24,12 @@ CLASSES_OF_INTEREST = [
     "motorcycle", 
     "bicycle", 
     "drone",
+    "airplane",
     "backpack",
-    "suitcase"
+    "suitcase",
+    "handbag",
+    "umbrella",
+    "cell phone"
 ]
 
 # Fence tampering detection settings

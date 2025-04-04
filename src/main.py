@@ -24,7 +24,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config import settings
 from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector
-from src.visualization import Visualizer
+from src.visualization import Visualizer, UI
 from utils.logger import logger, SurveillanceLogger
 from utils.alerting import alert_manager
 
@@ -67,6 +67,9 @@ class SurveillanceSystem:
         # Set up display option
         self.show_display = show_display
         
+        # Initialize UI if display is enabled
+        self.ui = UI(self.change_video_source) if show_display else None
+        
         # Initialize logging
         self.logger_instance = SurveillanceLogger()
         
@@ -77,23 +80,51 @@ class SurveillanceSystem:
         
         logger.info("Surveillance system initialized successfully")
     
+    def change_video_source(self, new_source):
+        """Change the video source while the system is running"""
+        logger.info(f"Changing video source to: {new_source}")
+        
+        # Close the current video source
+        if self.cap is not None:
+            self.cap.release()
+        
+        # Initialize the new video source
+        self.video_source = new_source
+        self.cap = self._init_video_capture(new_source)
+        
+        # Reset frame count and other tracking variables
+        self.frame_count = 0
+        self.behavior_analyzer = BehaviorAnalyzer()  # Reset behavior tracking
+        
+        # Reset any video writer if it exists
+        if self.writer is not None:
+            self.writer.release()
+            self.writer = None
+    
     def _init_video_capture(self, source):
         """Initialize video capture from source"""
         try:
             # Try to interpret source as an integer (camera index)
-            cap = cv2.VideoCapture(int(source))
+            if isinstance(source, str) and source.isdigit():
+                source = int(source)
+                
+            if isinstance(source, int):
+                cap = cv2.VideoCapture(source)
+                # Set resolution for webcam
+                cap.set(cv2.CAP_PROP_FRAME_WIDTH, settings.FRAME_WIDTH)
+                cap.set(cv2.CAP_PROP_FRAME_HEIGHT, settings.FRAME_HEIGHT)
+                cap.set(cv2.CAP_PROP_FPS, settings.FPS)
+            else:
+                # If not an integer, treat as a file path
+                cap = cv2.VideoCapture(source)
         except (ValueError, TypeError):
-            # If not an integer, treat as a file path
-            cap = cv2.VideoCapture(source)
+            # If all else fails, try as a string path
+            cap = cv2.VideoCapture(str(source))
         
         if not cap.isOpened():
             raise ValueError(f"Failed to open video source: {source}")
         
-        # Set resolution
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, settings.FRAME_WIDTH)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, settings.FRAME_HEIGHT)
-        cap.set(cv2.CAP_PROP_FPS, settings.FPS)
-        
+        logger.info(f"Video source initialized: {source}")
         return cap
     
     def _init_video_writer(self, frame_size):
@@ -191,6 +222,12 @@ class SurveillanceSystem:
         self.running = True
         logger.info("Starting surveillance system")
         
+        # Create a named window for mouse callbacks if we're showing the display
+        if self.show_display:
+            cv2.namedWindow("Border Surveillance")
+            if self.ui:
+                cv2.setMouseCallback("Border Surveillance", self.ui.handle_mouse_event)
+        
         # Wait for first frame to initialize writer
         ret, frame = self.cap.read()
         if not ret:
@@ -207,10 +244,21 @@ class SurveillanceSystem:
                 ret, frame = self.cap.read()
                 if not ret:
                     logger.info("End of video stream reached")
-                    break
+                    # If we're using a file source, try to loop back to beginning
+                    if not isinstance(self.video_source, int) and self.ui and self.ui.video_source_type == "file":
+                        self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)  # Rewind to start
+                        ret, frame = self.cap.read()
+                        if not ret:
+                            break  # Really can't read, so break
+                    else:
+                        break
                 
                 # Process frame
                 processed_frame, detections, alerts = self._process_frame(frame)
+                
+                # Add UI elements if enabled
+                if self.show_display and self.ui:
+                    processed_frame = self.ui.draw_buttons(processed_frame)
                 
                 # Write to output if enabled
                 if self.writer:
@@ -222,6 +270,9 @@ class SurveillanceSystem:
                     key = cv2.waitKey(1) & 0xFF
                     if key == ord('q'):
                         break
+                    elif key == ord('s'):  # 's' key to toggle video source
+                        if self.ui:
+                            self.ui.toggle_video_source()
                 
                 self.frame_count += 1
         

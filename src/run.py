@@ -51,7 +51,7 @@ def parse_arguments():
     
     parser.add_argument(
         "-s", "--source",
-        help="Video source (camera index or file path)",
+        help="Video source (camera index or file path), can also be toggled in the UI",
         default=settings.VIDEO_SOURCE
     )
     
@@ -103,6 +103,10 @@ def main():
     
     # Start surveillance system if requested
     if not args.dashboard_only:
+        # Add reminder about video toggling feature
+        if not args.no_display:
+            logger.info("UI Controls: Click the button or press 's' key to toggle between webcam and video file input")
+        
         surveillance_process = multiprocessing.Process(
             target=run_surveillance_system,
             args=(args.source, args.output, not args.no_display)
