@@ -437,6 +437,11 @@ class GeoMapVisualizer:
     def init_map(self):
         """Initialize the map with default settings"""
         try:
+            # Ensure output directory exists
+            output_dir = os.path.dirname(os.path.abspath(settings.MAP_OUTPUT_FILE))
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Create initial map
             self.map = folium.Map(
                 location=self.location,
                 zoom_start=settings.MAP_ZOOM_LEVEL,
@@ -469,13 +474,14 @@ class GeoMapVisualizer:
             self._add_legend_control()
             
             # Save initial map
-            self.save_map()
+            map_file_path = os.path.abspath(str(settings.MAP_OUTPUT_FILE))
+            self.map.save(map_file_path)
             
             # Try to connect to GPS
             self.connect_to_gps()
             
         except Exception as e:
-            print(f"Error initializing map: {str(e)}")
+            logging.error(f"Error initializing map: {str(e)}")
     
     def _add_legend_control(self):
         """Add a custom legend control to the map"""
@@ -857,12 +863,18 @@ class GeoMapVisualizer:
         """Save the map to an HTML file"""
         try:
             # Ensure the output directory exists
-            os.makedirs(os.path.dirname(settings.MAP_OUTPUT_FILE), exist_ok=True)
+            output_dir = os.path.dirname(settings.MAP_OUTPUT_FILE)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Make sure the MAP_OUTPUT_FILE is a string, not a float or other type
+            map_file = str(settings.MAP_OUTPUT_FILE)
             
             # Save the map
-            self.map.save(settings.MAP_OUTPUT_FILE)
+            self.map.save(map_file)
+            return True
         except Exception as e:
-            print(f"Error saving map: {str(e)}")
+            logging.error(f"Error saving map: {str(e)}")
+            return False
 
     # Add property for heatmap
     @property
@@ -971,4 +983,109 @@ class GeoMapVisualizer:
             return True
         except Exception as e:
             logging.error(f"Error opening map in browser: {str(e)}")
+            return False
+            
+    def generate_mock_data(self, num_points=20, spread_km=5):
+        """
+        Generate mock detection data around the current location
+        
+        Args:
+            num_points: Number of mock detection points to generate
+            spread_km: Approximate spread in kilometers around current location
+            
+        Returns:
+            bool: True if successful
+        """
+        try:
+            # Detection types to randomly choose from
+            detection_types = [
+                'person', 'car', 'truck', 'motorcycle', 'bicycle', 
+                'backpack', 'suitcase', 'cell phone', 'knife'
+            ]
+            
+            # Create timestamps spanning the last 24 hours
+            now = datetime.now()
+            
+            # Get the base location from current location
+            base_lat, base_lon = self.location
+            
+            # Approximate conversion from kilometers to degrees (varies by latitude)
+            # At the equator, 1 degree is about 111 km
+            lat_offset_per_km = 1 / 111.0  # degrees per km
+            lon_offset_per_km = 1 / (111.0 * np.cos(np.radians(base_lat)))  # degrees per km
+            
+            # Generate random points
+            for i in range(num_points):
+                # Random type
+                detection_type = np.random.choice(detection_types)
+                
+                # Random position around base location
+                # Using normal distribution for more realistic clustering
+                lat_offset = np.random.normal(0, spread_km * lat_offset_per_km / 2)
+                lon_offset = np.random.normal(0, spread_km * lon_offset_per_km / 2)
+                
+                lat = base_lat + lat_offset
+                lon = base_lon + lon_offset
+                
+                # Random timestamp within the last 24 hours
+                hours_ago = np.random.uniform(0, 24)
+                timestamp = now - timedelta(hours=hours_ago)
+                
+                # Random confidence
+                confidence = np.random.uniform(0.6, 0.98)
+                
+                # Add additional data based on type
+                additional_data = {}
+                
+                if detection_type in ['person']:
+                    additional_data['movement'] = np.random.choice(['walking', 'running', 'stationary'])
+                    additional_data['estimated_height'] = f"{np.random.uniform(1.5, 2.0):.2f}m"
+                    
+                elif detection_type in ['car', 'truck', 'motorcycle']:
+                    additional_data['speed'] = f"{np.random.uniform(0, 80):.1f} km/h"
+                    additional_data['direction'] = np.random.choice(['north', 'south', 'east', 'west'])
+                    
+                elif detection_type in ['backpack', 'suitcase', 'cell phone']:
+                    additional_data['size'] = np.random.choice(['small', 'medium', 'large'])
+                    
+                # Add a special alert for knives
+                if detection_type == 'knife':
+                    additional_data['alert_level'] = 'high'
+                    additional_data['action_required'] = 'immediate inspection'
+                
+                # Add detection to the map
+                self.add_detection(
+                    detection_type=detection_type,
+                    lat=lat,
+                    lon=lon,
+                    confidence=confidence,
+                    timestamp=timestamp,
+                    additional_data=additional_data
+                )
+            
+            # Add a special border crossing alert
+            border_lat = base_lat + np.random.normal(0, spread_km * lat_offset_per_km / 3)
+            border_lon = base_lon + np.random.normal(0, spread_km * lon_offset_per_km / 3)
+            border_timestamp = now - timedelta(minutes=np.random.uniform(5, 60))
+            
+            self.add_detection(
+                detection_type='border_crossing',
+                lat=border_lat,
+                lon=border_lon,
+                confidence=0.92,
+                timestamp=border_timestamp,
+                additional_data={
+                    'direction': 'south_to_north',
+                    'group_size': np.random.randint(1, 4),
+                    'alert_level': 'critical',
+                    'response_status': 'pending'
+                }
+            )
+            
+            # Update the map
+            self.update_map()
+            return True
+            
+        except Exception as e:
+            logging.error(f"Error generating mock data: {str(e)}")
             return False

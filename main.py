@@ -41,6 +41,9 @@ class BorderSurveillanceSystem:
         self.video_player = None  # For video playback
         self.geo_map_visualizer = GeoMapVisualizer()  # Initialize geographical map visualizer
         
+        # Generate mock data for the map to demonstrate functionality
+        self.geo_map_visualizer.generate_mock_data(num_points=30, spread_km=10)
+        
         # Try to setup MQTT client for alerts if enabled
         self.mqtt_client = None
         if settings.DASHBOARD_ALERTS_ENABLED and mqtt_available:
@@ -282,6 +285,10 @@ class BorderSurveillanceSystem:
         # Clear detections button
         self.clear_detections_button = ttk.Button(map_control_frame, text="Clear Detections", command=self.clear_map_detections)
         self.clear_detections_button.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # Add mock data button
+        self.add_mock_data_button = ttk.Button(map_control_frame, text="Add Mock Data", command=self.add_mock_map_data)
+        self.add_mock_data_button.pack(side=tk.LEFT, padx=5, pady=5)
         
         # Toggle heatmap button
         self.heatmap_var = tk.BooleanVar(value=True)
@@ -1288,12 +1295,12 @@ class BorderSurveillanceSystem:
     def clear_map_detections(self):
         """Clear all detection points from the map"""
         if hasattr(self, 'geo_map_visualizer'):
+            # Clear detection points
             self.geo_map_visualizer.detection_points = []
-            self.geo_map_visualizer.update_map()
-            messagebox.showinfo("Map Cleared", "All detection points have been cleared from the map.")
             
-            # Update map info
-            self.update_map_info("All detection points cleared from map.")
+            # Update the map
+            self.refresh_map()
+            self.update_map_info("All detection points have been cleared from the map.")
     
     def update_map_info(self, message):
         """Update the map information text box"""
@@ -1363,6 +1370,13 @@ class BorderSurveillanceSystem:
                 self.update_map_info("Heatmap visualization enabled.")
             else:
                 self.update_map_info("Heatmap visualization disabled.")
+
+    def add_mock_map_data(self):
+        """Add more mock data to the map"""
+        if hasattr(self, 'geo_map_visualizer'):
+            self.geo_map_visualizer.generate_mock_data(num_points=30, spread_km=10)
+            self.refresh_map()
+            self.update_map_info("Added more mock data to the map.")
 
 if __name__ == "__main__":
     app = BorderSurveillanceSystem()

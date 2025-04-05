@@ -850,3 +850,947 @@
 2025-04-05 16:41:34,664 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
 2025-04-05 16:42:43,246 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
 2025-04-05 16:42:43,985 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:45:15,242 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:45:16,036 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:46:42,569 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:46:43,394 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:46:54,820 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:54,847 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:54,882 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:54,916 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:54,937 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:54,939 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:54,949 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:54,961 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:54,983 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,014 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,182 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,216 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,249 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,283 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,307 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,315 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,350 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,383 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,387 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,416 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,436 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,450 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,482 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,515 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,520 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,551 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,594 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,617 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,628 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,649 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,687 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,716 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,726 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,752 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,786 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,800 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,819 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,850 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,885 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,923 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,954 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,958 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:55,986 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:55,995 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,018 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,059 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,093 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,093 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,118 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,124 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,153 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,184 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,222 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,250 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,255 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,289 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,326 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,358 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,489 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,518 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,548 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,559 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,586 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,617 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,618 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,660 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,685 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,723 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,740 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,754 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,773 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,791 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,823 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,852 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,886 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,888 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:56,915 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:56,924 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,082 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,123 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,151 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,166 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,186 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,191 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,217 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,252 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,271 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,286 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,317 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,321 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,355 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,383 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,392 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,431 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,457 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,486 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,528 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,562 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,587 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,596 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,623 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,653 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,666 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,696 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,761 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,791 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,807 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,818 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,834 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,887 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:57,900 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,959 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:57,987 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,035 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,102 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,112 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,164 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,168 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,222 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,258 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,280 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,313 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,322 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,354 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,403 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,418 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,437 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,464 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,477 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,497 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,529 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,572 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,624 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,627 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,660 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,723 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,725 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:58,760 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,785 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,820 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,873 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,931 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:58,992 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,041 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,063 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,105 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,130 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,166 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,200 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,212 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,224 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,508 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,531 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,565 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,610 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,658 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,670 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,674 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,698 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,770 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,847 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,862 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,897 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:46:59,932 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:46:59,951 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,020 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,023 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,068 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,146 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,199 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,251 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,257 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,286 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,343 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,426 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,431 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,468 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,480 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,504 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,548 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,552 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,566 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,630 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,701 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,765 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,787 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,815 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,859 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:00,887 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,941 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:00,986 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,006 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,031 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,056 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,077 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,113 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,139 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,147 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,153 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,199 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,206 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,280 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,299 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,339 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,390 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,451 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,452 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,500 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,515 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,517 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,537 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,585 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,609 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,631 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,686 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,716 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,731 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,767 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,819 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,863 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,864 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,908 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,929 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,931 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:01,936 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:01,946 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,028 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,046 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,101 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,178 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,229 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,278 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,313 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,376 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,403 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,768 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,775 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,809 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,855 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:02,866 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,923 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:02,983 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,009 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,066 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,101 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,142 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,163 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,199 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,202 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,282 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,339 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,414 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,466 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,476 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,540 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,571 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,574 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,645 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,656 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,690 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,705 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,775 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,856 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,906 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,918 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:03,928 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:03,935 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,010 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,150 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,158 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,163 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,205 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,263 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,283 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,298 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,375 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,433 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,462 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,563 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,597 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,635 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,675 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,739 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,773 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,807 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,854 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:04,930 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:04,976 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,001 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,055 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,134 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,194 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,260 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,284 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,292 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,369 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,447 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,450 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,458 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,489 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,535 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,615 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,666 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,731 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,771 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,858 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,865 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,877 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,904 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:05,947 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:05,989 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:06,037 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:06,056 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,155 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,240 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,489 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,585 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,624 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,718 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,762 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,930 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:06,945 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,519 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,533 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,559 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,579 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,697 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,959 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:07,995 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,096 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,227 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,291 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,368 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,489 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,637 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,676 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,680 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,728 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,861 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:08,891 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,011 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,085 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,235 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,331 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,383 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,395 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,605 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,668 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,743 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,766 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,859 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,871 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,951 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:09,974 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,124 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,316 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,400 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,487 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,574 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,612 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,648 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,693 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,767 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,870 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:10,909 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,072 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,116 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,125 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,156 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,220 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,235 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,259 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,276 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,624 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,788 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,857 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,860 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:11,883 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,111 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,193 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,223 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,301 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,309 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,356 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,380 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,424 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,453 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,462 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,558 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,649 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,662 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:12,882 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,059 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,089 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,106 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,130 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,222 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:13,511 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:16,256 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,321 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,468 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,498 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,554 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,636 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,775 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,821 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,876 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:16,997 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,015 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,066 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,115 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,148 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,177 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,256 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,291 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,337 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,385 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,427 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,454 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,484 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,553 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,590 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,683 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,717 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,749 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,791 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,815 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,874 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,920 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:17,996 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,044 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,107 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,159 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,220 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,271 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,355 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,422 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,460 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,562 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,675 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,738 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,805 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,868 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,919 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:18,955 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,037 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,076 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,121 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,155 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,209 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,257 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,279 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,311 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,385 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:19,428 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,019 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,046 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,130 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,165 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,220 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,240 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,282 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,321 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,345 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,411 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,456 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,538 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,621 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,650 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,709 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,776 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,815 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,860 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,894 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:20,924 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:20,994 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,019 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,080 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,083 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,143 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,172 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,191 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,221 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,246 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,250 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,284 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,304 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,320 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,363 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,415 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,456 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,486 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,547 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,554 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,588 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,638 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,705 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,706 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,713 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,733 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,757 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,820 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,835 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,844 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,868 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,873 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,902 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,967 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:21,976 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:21,992 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,017 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,025 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,080 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,116 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,136 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,168 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,182 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,234 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,284 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,551 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,592 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:22,597 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,601 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:22,613 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,331 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,357 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,363 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,378 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,413 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,482 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,523 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,547 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,640 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,646 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,679 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,679 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,739 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,755 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,776 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,849 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,851 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,888 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,915 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:23,923 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,961 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:23,982 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,019 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,041 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,085 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,136 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,173 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,248 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,266 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,270 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,292 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,379 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,386 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,391 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,419 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,448 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,456 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,466 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,514 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,537 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,541 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,626 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,653 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,684 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,698 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,723 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,726 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,733 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,755 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,818 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,821 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,836 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:24,853 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,914 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:24,984 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,005 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,057 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,120 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,153 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,161 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,179 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,247 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,253 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,271 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,277 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,337 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,393 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,408 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,427 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,449 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,516 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,532 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,552 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,586 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,594 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,699 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,702 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,766 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,775 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,877 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:25,895 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:25,982 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,028 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,046 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,100 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,115 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,215 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,277 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,297 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,310 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,402 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,417 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,521 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,582 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,627 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,648 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,661 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,683 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,694 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,719 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,723 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,775 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,788 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,810 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,888 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:26,899 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:26,943 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:27,749 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:27,775 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,780 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,782 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,800 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:27,846 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,904 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,933 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:27,976 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,020 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,110 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,133 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,140 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,153 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,288 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,300 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,330 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,380 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,394 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,427 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,456 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,516 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,647 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,666 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,756 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,827 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:28,840 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:28,977 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,032 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,110 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,164 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,196 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,412 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,414 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,492 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,499 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,506 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,519 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,562 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,615 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,647 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,677 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:29,679 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,755 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,830 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:29,888 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,006 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,076 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,134 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,163 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,227 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,299 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,485 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,549 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,705 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,710 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,731 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:30,843 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,911 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:30,996 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,003 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,068 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,078 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,094 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,152 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,165 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,273 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,315 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,344 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,410 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,486 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,487 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,557 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,569 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,577 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,586 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:31,628 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,716 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,800 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,884 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:31,926 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,005 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,010 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,018 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,050 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,146 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,226 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,246 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,254 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,259 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,268 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,270 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,308 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,329 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,334 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,484 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,550 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,552 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,583 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,589 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:32,654 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:32,816 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:33,025 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:33,047 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:33,152 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:33,915 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:34,521 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:34,684 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:34,819 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:34,978 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:35,025 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:35,076 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:35,152 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:35,269 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:35,612 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:35,687 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:35,770 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:36,710 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:36,750 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:36,769 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:36,825 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:36,864 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:36,903 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:36,924 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,003 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,058 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,117 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,213 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,237 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,252 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,294 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,354 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,382 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,528 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,561 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,711 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,827 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,856 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,876 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,908 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:37,963 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:37,981 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:38,019 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,105 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,275 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,359 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,388 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:38,507 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,716 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,830 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:38,971 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,103 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,271 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,407 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,417 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,592 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,611 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,619 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,704 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,707 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,751 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:39,841 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:39,962 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,034 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:40,065 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,101 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:40,151 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:40,157 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,247 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,394 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,454 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:40,507 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,598 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,692 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:40,737 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,838 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,964 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:40,972 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:41,166 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:41,198 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:41,342 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:41,361 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:41,368 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:41,482 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:41,548 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:41,642 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:41,859 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:41,953 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:42,085 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:42,262 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:42,778 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:42,874 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:42,932 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:42,953 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:42,957 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:42,998 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:43,034 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,159 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,275 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:43,335 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:43,348 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,463 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:43,504 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,712 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,807 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:43,830 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:43,893 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,008 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,086 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,137 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:44,326 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,559 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,640 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,781 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:44,797 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:45,853 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:45,858 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:45,954 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,021 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,108 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,124 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,159 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,165 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,197 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,298 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,438 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,493 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,552 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,678 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,718 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,747 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,805 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,819 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:46,914 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:46,965 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,043 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:47,048 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:47,082 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,200 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,268 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:47,345 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,481 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,574 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:47,575 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,587 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:47,684 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,752 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:47,957 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,089 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,095 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,105 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,142 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,157 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,225 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,229 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,391 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,398 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,439 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,446 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,562 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,647 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 16:47:48,692 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,856 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,911 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:48,936 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,007 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,036 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,221 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,296 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,371 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,416 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,453 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,587 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,610 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,668 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,752 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,832 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:49,952 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,052 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,171 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,511 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,576 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,644 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:50,910 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:51,133 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:51,155 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:51,255 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:51,300 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,044 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,096 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,139 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,172 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,306 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,321 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,398 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,442 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,450 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,482 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,557 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,609 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,623 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,635 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,637 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,672 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,833 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:52,995 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:47:53,042 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 16:51:12,283 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:51:13,236 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
