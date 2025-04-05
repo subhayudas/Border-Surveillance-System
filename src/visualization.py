@@ -870,3 +870,105 @@ class GeoMapVisualizer:
         """Get heatmap enabled state from settings if available"""
         # Default to True if not set
         return getattr(settings, 'HEATMAP_ENABLED', True)
+        
+    def get_map_image(self, width, height):
+        """
+        Generate an image of the current map for display in the dashboard
+        
+        Args:
+            width: Desired image width
+            height: Desired image height
+            
+        Returns:
+            ImageTk.PhotoImage: Map image ready for display in Tkinter
+        """
+        try:
+            # Make sure the map is saved
+            self.save_map()
+            
+            # Use a browser automation approach to render the HTML map to image
+            # Since we can't directly render HTML in Python, we'll create a static image
+            # from the saved HTML file
+            
+            # Create a simple image with map information
+            img = Image.new('RGB', (width, height), color=(245, 245, 245))
+            draw = ImageDraw.Draw(img)
+            
+            # Try to use a nice font
+            try:
+                font = ImageFont.truetype("Arial", 16)
+                small_font = ImageFont.truetype("Arial", 12)
+            except:
+                font = ImageFont.load_default()
+                small_font = ImageFont.load_default()
+            
+            # Add title and instructions
+            draw.text((20, 20), "Interactive Geo Map", fill=(0, 0, 0), font=font)
+            draw.text((20, 60), f"Current Location: {self.location[0]:.6f}, {self.location[1]:.6f}", 
+                     fill=(0, 0, 0), font=small_font)
+            draw.text((20, 90), f"Total Detection Points: {len(self.detection_points)}", 
+                     fill=(0, 0, 0), font=small_font)
+            
+            # Add information about the map file
+            draw.text((20, 130), "The interactive map is available at:", fill=(0, 0, 0), font=small_font)
+            draw.text((20, 150), settings.MAP_OUTPUT_FILE, fill=(0, 0, 255), font=small_font)
+            
+            # Add instructions to view the map
+            y_pos = 200
+            instructions = [
+                "To view the interactive map with all detection points:",
+                "1. Click 'Open in Browser' to see the full interactive map",
+                "2. Use the layer controls to toggle different detection types",
+                "3. Click on detection points to see details",
+                "4. Use the time filter to show detections from different periods"
+            ]
+            
+            for line in instructions:
+                draw.text((20, y_pos), line, fill=(0, 0, 0), font=small_font)
+                y_pos += 25
+            
+            # Create a button-like area
+            button_x, button_y = width // 2 - 100, height - 100
+            draw.rectangle([(button_x, button_y), (button_x + 200, button_y + 40)], 
+                          fill=(70, 130, 180), outline=(0, 0, 0))
+            draw.text((button_x + 30, button_y + 12), "Open Interactive Map", fill=(255, 255, 255), font=font)
+            
+            # Convert to PhotoImage for Tkinter
+            photo_img = ImageTk.PhotoImage(img)
+            return photo_img
+            
+        except Exception as e:
+            logging.error(f"Error generating map image: {str(e)}")
+            
+            # Return a basic error image
+            img = Image.new('RGB', (width, height), color=(240, 240, 240))
+            draw = ImageDraw.Draw(img)
+            try:
+                font = ImageFont.truetype("Arial", 16)
+            except:
+                font = ImageFont.load_default()
+                
+            draw.text((20, 20), "Map Visualization Error", fill=(255, 0, 0), font=font)
+            draw.text((20, 60), str(e), fill=(0, 0, 0), font=font)
+            draw.text((20, 100), "Please check console for details.", fill=(0, 0, 0), font=font)
+            
+            return ImageTk.PhotoImage(img)
+            
+    def open_map_in_browser(self):
+        """
+        Open the generated map in the default web browser
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            # Make sure map is saved
+            self.save_map()
+            
+            # Open the map file in the browser
+            map_path = os.path.abspath(settings.MAP_OUTPUT_FILE)
+            webbrowser.open(f"file://{map_path}")
+            return True
+        except Exception as e:
+            logging.error(f"Error opening map in browser: {str(e)}")
+            return False
