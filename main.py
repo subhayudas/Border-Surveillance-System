@@ -9,7 +9,7 @@ from datetime import datetime
 import numpy as np
 
 # Import detection and visualization modules
-from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector, WeaponDetector, BorderCrossingDetector
+from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector, ItemDetector, BorderCrossingDetector
 from src.visualization import Visualizer
 from config import settings
 
@@ -19,7 +19,8 @@ class BorderSurveillanceSystem:
         self.active_feeds = []  # List to track active camera feeds
         self.is_running = False
         self.alert_history = []  # Store alert history
-        self.video_file = None  # For uploaded video analysis
+        self.video_files = []  # List to store multiple uploaded videos
+        self.current_video_index = 0  # Index of the currently displayed video
         self.video_player = None  # For video playback
         self.setup_ui()
         
@@ -138,15 +139,25 @@ class BorderSurveillanceSystem:
         control_frame = ttk.Frame(self.video_tab)
         control_frame.pack(fill=tk.X, pady=10)
         
-        ttk.Button(control_frame, text="Upload Video", command=self.upload_video).pack(side=tk.LEFT, padx=5)
-        self.analyze_button = ttk.Button(control_frame, text="Analyze Video", command=self.analyze_video, state=tk.DISABLED)
+        ttk.Button(control_frame, text="Upload Videos", command=self.upload_video).pack(side=tk.LEFT, padx=5)
+        self.analyze_button = ttk.Button(control_frame, text="Analyze All Videos", command=self.analyze_video, state=tk.DISABLED)
         self.analyze_button.pack(side=tk.LEFT, padx=5)
         self.stop_analysis_button = ttk.Button(control_frame, text="Stop Analysis", command=self.stop_video_analysis, state=tk.DISABLED)
         self.stop_analysis_button.pack(side=tk.LEFT, padx=5)
         
+        # Video navigation buttons for multiple videos
+        self.video_nav_frame = ttk.Frame(control_frame)
+        self.video_nav_frame.pack(side=tk.LEFT, padx=20)
+        self.prev_video_btn = ttk.Button(self.video_nav_frame, text="◀ Previous", command=self.show_previous_video, state=tk.DISABLED)
+        self.prev_video_btn.pack(side=tk.LEFT, padx=5)
+        self.next_video_btn = ttk.Button(self.video_nav_frame, text="Next ▶", command=self.show_next_video, state=tk.DISABLED)
+        self.next_video_btn.pack(side=tk.LEFT, padx=5)
+        
         # Video file info
-        self.video_info_var = tk.StringVar(value="No video selected")
-        ttk.Label(control_frame, textvariable=self.video_info_var).pack(side=tk.LEFT, padx=20)
+        self.video_info_var = tk.StringVar(value="No videos selected")
+        self.video_count_var = tk.StringVar(value="")
+        ttk.Label(control_frame, textvariable=self.video_info_var).pack(side=tk.LEFT, padx=5)
+        ttk.Label(control_frame, textvariable=self.video_count_var).pack(side=tk.LEFT, padx=5)
         
         # Video display frame
         self.video_display_frame = ttk.Frame(self.video_tab)
@@ -183,9 +194,9 @@ class BorderSurveillanceSystem:
         ttk.Label(stats_inner, textvariable=self.vehicle_count).grid(row=0, column=3, sticky=tk.W, padx=5, pady=5)
         
         # Weapon detections
-        ttk.Label(stats_inner, text="Weapons:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
-        self.weapon_count = tk.StringVar(value="0")
-        ttk.Label(stats_inner, textvariable=self.weapon_count).grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(stats_inner, text="Items:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
+        self.item_count = tk.StringVar(value="0")
+        ttk.Label(stats_inner, textvariable=self.item_count).grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)
         
         # Alerts count
         ttk.Label(stats_inner, text="Total Alerts:").grid(row=1, column=2, sticky=tk.W, padx=5, pady=5)
@@ -433,31 +444,31 @@ class BorderSurveillanceSystem:
                 if 'detector' not in camera:
                     camera['detector'] = ObjectDetector()
                     camera['behavior_analyzer'] = BehaviorAnalyzer()
-                    camera['weapon_detector'] = WeaponDetector()
+                    camera['item_detector'] = ItemDetector()
                     camera['border_detector'] = BorderCrossingDetector()  # Add border detector
                     camera['visualizer'] = Visualizer()
                 
                 # Process frame with object detection
-                detections = camera['detector'].detect(frame)
+                general_detections = camera['detector'].detect(frame)
+                detected_items = camera['item_detector'].detect(frame)
                 
-                # Check for weapons
-                weapon_detections = camera['weapon_detector'].detect(frame)
-                if weapon_detections:
-                    detections.extend(weapon_detections)
-                    # Update weapon count
-                    current_count = int(self.weapon_count.get())
-                    self.weapon_count.set(str(current_count + len(weapon_detections)))
+                # Check for items
+                if detected_items:
+                    general_detections.extend(detected_items)
+                    # Update item count
+                    current_count = int(self.item_count.get())
+                    self.item_count.set(str(current_count + len(detected_items)))
                     
-                    # Add weapon alert
-                    for weapon in weapon_detections:
-                        weapon_type = weapon[6]  # class_name
-                        self.add_alert("WEAPON ALERT", f"{weapon_type} detected in {camera['name']}", is_critical=True)
+                    # Add item alert
+                    for item in detected_items:
+                        item_type = item[6]  # class_name
+                        self.add_alert("ITEM ALERT", f"{item_type} detected in {camera['name']}")
                 
                 # Analyze behaviors
-                behavior_alerts = camera['behavior_analyzer'].update(detections, frame)
+                behavior_alerts = camera['behavior_analyzer'].update(general_detections, frame)
                 
                 # Detect border crossings
-                border_alerts = camera['border_detector'].detect(detections, frame)
+                border_alerts = camera['border_detector'].detect(general_detections, frame)
                 if border_alerts:
                     for alert in border_alerts:
                         self.add_alert("BORDER CROSSING", f"{alert['message']} in {camera['name']}", is_critical=True)
@@ -476,16 +487,16 @@ class BorderSurveillanceSystem:
                         self.alert_count.set(str(current_count + 1))
                 
                 # Update statistics
-                self.update_statistics(detections)
+                self.update_statistics(general_detections)
                 
                 # Combine all alerts
                 all_alerts = behavior_alerts + border_alerts
                 
                 # Visualize results
-                processed_frame = camera['visualizer'].draw_detections(frame.copy(), detections)
+                processed_frame = camera['visualizer'].draw_detections(frame.copy(), general_detections)
                 processed_frame = camera['visualizer'].draw_alerts(processed_frame, all_alerts)
                 processed_frame = camera['visualizer'].draw_border_lines(processed_frame, settings.BORDER_LINES)
-                processed_frame = camera['visualizer'].add_info_overlay(processed_frame, len(detections))
+                processed_frame = camera['visualizer'].add_info_overlay(processed_frame, len(general_detections))
                 
                 # Resize to fixed display resolution
                 processed_frame = cv2.resize(processed_frame, (settings.DISPLAY_WIDTH, settings.DISPLAY_HEIGHT))
@@ -557,58 +568,145 @@ class BorderSurveillanceSystem:
         })
     
     def upload_video(self):
-        """Open file dialog to select a video file for analysis"""
+        """Open file dialog to select multiple video files for analysis"""
         filetypes = [
             ("Video files", "*.mp4 *.avi *.mov *.mkv"),
             ("All files", "*.*")
         ]
-        video_path = filedialog.askopenfilename(
-            title="Select Video File",
+        video_paths = filedialog.askopenfilenames(
+            title="Select Video Files",
             filetypes=filetypes
         )
         
-        if not video_path:
+        if not video_paths:
             return
-            
-        # Try to open the video
-        cap = cv2.VideoCapture(video_path)
-        if not cap.isOpened():
-            messagebox.showerror("Error", "Could not open the video file")
-            return
-            
-        # Get video info
-        fps = cap.get(cv2.CAP_PROP_FPS)
-        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        duration = frame_count / fps if fps > 0 else 0
-        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         
-        # Update video info
-        self.video_file = {
-            'path': video_path,
-            'cap': cap,
-            'fps': fps,
-            'frame_count': frame_count,
-            'duration': duration,
-            'width': width,
-            'height': height,
-            'current_frame': 0
-        }
+        # Clear existing videos
+        for video in self.video_files:
+            if 'cap' in video and video['cap'] is not None:
+                video['cap'].release()
+        
+        self.video_files = []
+        self.current_video_index = 0
+        
+        valid_videos = 0
+        
+        for video_path in video_paths:
+            # Try to open the video
+            cap = cv2.VideoCapture(video_path)
+            if not cap.isOpened():
+                messagebox.showwarning("Warning", f"Could not open the video file: {os.path.basename(video_path)}")
+                continue
+                
+            # Get video info
+            fps = cap.get(cv2.CAP_PROP_FPS)
+            frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            duration = frame_count / fps if fps > 0 else 0
+            width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            
+            # Add to video list
+            self.video_files.append({
+                'path': video_path,
+                'cap': cap,
+                'fps': fps,
+                'frame_count': frame_count,
+                'duration': duration,
+                'width': width,
+                'height': height,
+                'current_frame': 0,
+                'analyzed': False,
+                'results': [],
+                'filename': os.path.basename(video_path)
+            })
+            
+            valid_videos += 1
+        
+        if valid_videos == 0:
+            self.video_info_var.set("No valid videos selected")
+            return
+            
+        # Update UI for video navigation
+        if valid_videos > 1:
+            self.next_video_btn.config(state=tk.NORMAL)
+            self.prev_video_btn.config(state=tk.DISABLED)  # Start with first video
         
         # Update UI
-        filename = os.path.basename(video_path)
-        self.video_info_var.set(f"Video: {filename} | Duration: {duration:.1f}s | Resolution: {width}x{height}")
+        self.update_video_info()
         self.analyze_button.config(state=tk.NORMAL)
         
-        # Display first frame
-        ret, frame = cap.read()
-        if ret:
-            self.display_video_frame(frame)
+        # Display first frame of first video
+        self.display_current_video()
             
         # Reset results
         self.video_results_text.config(state=tk.NORMAL)
         self.video_results_text.delete(1.0, tk.END)
         self.video_results_text.config(state=tk.DISABLED)
+    
+    def update_video_info(self):
+        """Update the video info display for the current video"""
+        if not self.video_files:
+            self.video_info_var.set("No videos selected")
+            self.video_count_var.set("")
+            return
+            
+        current_video = self.video_files[self.current_video_index]
+        filename = current_video['filename']
+        duration = current_video['duration']
+        width = current_video['width']
+        height = current_video['height']
+        
+        self.video_info_var.set(f"Video: {filename} | Duration: {duration:.1f}s | Resolution: {width}x{height}")
+        self.video_count_var.set(f"Video {self.current_video_index + 1} of {len(self.video_files)}")
+    
+    def show_next_video(self):
+        """Display the next video in the list"""
+        if self.current_video_index < len(self.video_files) - 1:
+            self.current_video_index += 1
+            self.update_video_info()
+            self.display_current_video()
+            
+            # Update navigation buttons
+            self.prev_video_btn.config(state=tk.NORMAL)
+            if self.current_video_index >= len(self.video_files) - 1:
+                self.next_video_btn.config(state=tk.DISABLED)
+    
+    def show_previous_video(self):
+        """Display the previous video in the list"""
+        if self.current_video_index > 0:
+            self.current_video_index -= 1
+            self.update_video_info()
+            self.display_current_video()
+            
+            # Update navigation buttons
+            self.next_video_btn.config(state=tk.NORMAL)
+            if self.current_video_index <= 0:
+                self.prev_video_btn.config(state=tk.DISABLED)
+    
+    def display_current_video(self):
+        """Display the first frame of the current video"""
+        if not self.video_files:
+            return
+            
+        current_video = self.video_files[self.current_video_index]
+        cap = current_video['cap']
+        
+        # Reset to first frame
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        
+        # Read the frame
+        ret, frame = cap.read()
+        if ret:
+            self.display_video_frame(frame)
+            current_video['current_frame'] = 0
+        
+        # If this video has been analyzed, show its results
+        if current_video['analyzed'] and current_video['results']:
+            self.video_results_text.config(state=tk.NORMAL)
+            self.video_results_text.delete(1.0, tk.END)
+            for result in current_video['results']:
+                self.video_results_text.insert(tk.END, result + "\n")
+            self.video_results_text.config(state=tk.DISABLED)
     
     def display_video_frame(self, frame):
         """Display a frame in the video analysis tab"""
@@ -639,9 +737,9 @@ class BorderSurveillanceSystem:
         self.video_label.image = tk_image  # Keep a reference
     
     def analyze_video(self):
-        """Analyze the uploaded video file"""
-        if not self.video_file:
-            messagebox.showinfo("Info", "Please upload a video file first")
+        """Analyze all the uploaded video files"""
+        if not self.video_files:
+            messagebox.showinfo("Info", "Please upload videos first")
             return
             
         # Disable analyze button during analysis
@@ -659,114 +757,173 @@ class BorderSurveillanceSystem:
         threading.Thread(target=self.run_video_analysis, daemon=True).start()
     
     def run_video_analysis(self):
-        """Run video analysis in a background thread"""
+        """Run video analysis in a background thread for all videos"""
         try:
             # Initialize detectors
             object_detector = ObjectDetector()
             behavior_analyzer = BehaviorAnalyzer()
-            weapon_detector = WeaponDetector()
-            border_detector = BorderCrossingDetector()  # Add border crossing detector
+            item_detector = ItemDetector()
+            border_detector = BorderCrossingDetector()
             visualizer = Visualizer()
             
-            # Statistics
-            total_frames = self.video_file['frame_count']
-            processed_frames = 0
-            detections_count = 0
-            alerts_count = 0
-            weapon_detections = 0
-            border_crossings = 0  # Track border crossings
+            # Combined statistics for all videos
+            total_detections_count = 0
+            total_alerts_count = 0
+            total_item_detections = 0
+            total_border_crossings = 0
+            total_frames_processed = 0
             
-            # Reset video to beginning
-            self.video_file['cap'].set(cv2.CAP_PROP_POS_FRAMES, 0)
-            
-            # Process each frame
-            while self.video_analysis_running:
-                ret, frame = self.video_file['cap'].read()
-                if not ret:
+            # Process each video
+            for video_index, video in enumerate(self.video_files):
+                if not self.video_analysis_running:
                     break
-                    
-                processed_frames += 1
                 
-                # Update progress every 10 frames
-                if processed_frames % 10 == 0:
-                    progress = processed_frames / total_frames * 100
-                    self.update_analysis_progress(progress, processed_frames)
+                # Skip already analyzed videos
+                if video['analyzed']:
+                    continue
                 
-                # Object detection
-                detections = object_detector.detect(frame)
+                # Update UI to show which video is being processed
+                self.add_analysis_result(f"\nProcessing video {video_index + 1} of {len(self.video_files)}: {video['filename']}")
                 
-                # Check for weapons
-                weapons = weapon_detector.detect(frame)
-                if weapons:
-                    detections.extend(weapons)
-                    weapon_detections += len(weapons)
-                    
-                    # Log weapon detections
-                    for weapon in weapons:
-                        weapon_type = weapon[6]  # class_name
-                        self.add_analysis_result(f"WEAPON DETECTED: {weapon_type} at frame {processed_frames}")
+                # Statistics for this video
+                video_frames = video['frame_count']
+                processed_frames = 0
+                detections_count = 0
+                people_count = 0
+                vehicle_count = 0
+                item_count = 0
+                border_crossings = 0
+                suspicious_behaviors = 0
+                video_results = []
                 
-                detections_count += len(detections)
+                # Reset video to beginning
+                video['cap'].set(cv2.CAP_PROP_POS_FRAMES, 0)
                 
-                # Behavior analysis
-                behavior_alerts = behavior_analyzer.update(detections, frame)
-                if behavior_alerts:
-                    alerts_count += len(behavior_alerts)
-                    
-                    # Log alerts
-                    for alert in behavior_alerts:
-                        self.add_analysis_result(f"ALERT: {alert['message']} at frame {processed_frames}")
-                
-                # Border crossing detection
-                border_alerts = border_detector.detect(detections, frame)
-                if border_alerts:
-                    border_crossings += len(border_alerts)
-                    
-                    # Log border crossing alerts
-                    for alert in border_alerts:
-                        self.add_analysis_result(f"BORDER CROSSING: {alert['message']} at frame {processed_frames}")
+                # Process each frame
+                while self.video_analysis_running:
+                    ret, frame = video['cap'].read()
+                    if not ret:
+                        break
                         
-                        # Add to alert history with critical flag
-                        self.alert_history.append({
-                            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                            'type': "Border Crossing",
-                            'message': f"{alert['message']} (Video Analysis)",
-                            'critical': True
-                        })
-                
-                # Combine all alerts
-                all_alerts = behavior_alerts + border_alerts
-                if all_alerts:
-                    alerts_count += len(all_alerts)
+                    processed_frames += 1
+                    total_frames_processed += 1
                     
-                    # Log behavior alerts
-                    for alert in behavior_alerts:
-                        self.add_analysis_result(f"ALERT: {alert['message']} at frame {processed_frames}")
+                    # Update progress every 10 frames
+                    if processed_frames % 10 == 0:
+                        progress = processed_frames / video_frames * 100
+                        self.update_analysis_progress(progress, processed_frames, video_index)
+                    
+                    # Get detections from different detectors
+                    general_detections = object_detector.detect(frame)
+                    detected_items = item_detector.detect(frame)
+                    
+                    # Check for items
+                    if detected_items:
+                        general_detections.extend(detected_items)
+                        item_count += len(detected_items)
+                        total_item_detections += len(detected_items)
+                        
+                        # Log item detections
+                        for item in detected_items:
+                            item_type = item[6]  # class_name
+                            result_message = f"ITEM DETECTED: {item_type} at frame {processed_frames}"
+                            video_results.append(result_message)
+                            self.add_analysis_result(result_message)
+                    
+                    detections_count += len(general_detections)
+                    total_detections_count += len(general_detections)
+                    
+                    # Behavior analysis
+                    behavior_alerts = behavior_analyzer.update(general_detections, frame)
+                    
+                    # Border crossing detection
+                    border_alerts = border_detector.detect(general_detections, frame)
+                    if border_alerts:
+                        border_crossings += len(border_alerts)
+                        total_border_crossings += len(border_alerts)
+                        
+                        # Log border crossing alerts
+                        for alert in border_alerts:
+                            result_message = f"BORDER CROSSING: {alert['message']} at frame {processed_frames}"
+                            video_results.append(result_message)
+                            self.add_analysis_result(result_message)
+                            
+                            # Add to alert history with critical flag
+                            self.alert_history.append({
+                                'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                                'type': "Border Crossing",
+                                'message': f"{alert['message']} (Video {video_index + 1})",
+                                'critical': True
+                            })
+                    
+                    # Combine all alerts
+                    all_alerts = behavior_alerts + border_alerts
+                    if all_alerts:
+                        alerts_count += len(all_alerts)
+                        total_alerts_count += len(all_alerts)
+                        
+                        # Log behavior alerts
+                        for alert in behavior_alerts:
+                            result_message = f"ALERT: {alert['message']} at frame {processed_frames}"
+                            video_results.append(result_message)
+                            self.add_analysis_result(result_message)
+                    
+                    # Visualize results
+                    processed_frame = visualizer.draw_detections(frame.copy(), general_detections)
+                    processed_frame = visualizer.draw_alerts(processed_frame, all_alerts)
+                    processed_frame = visualizer.draw_border_lines(processed_frame, settings.BORDER_LINES)
+                    processed_frame = visualizer.add_info_overlay(processed_frame, len(general_detections))
+                    
+                    # Add video name overlay
+                    cv2.putText(
+                        processed_frame, 
+                        f"Video {video_index + 1}: {video['filename']}", 
+                        (10, 30), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.7, 
+                        (255, 255, 255), 
+                        2
+                    )
+                    
+                    # Display the processed frame
+                    self.root.after_idle(lambda f=processed_frame: self.display_video_frame(f))
+                    
+                    # Slow down processing to make it viewable
+                    time.sleep(0.03)
                 
-                # Visualize results
-                processed_frame = visualizer.draw_detections(frame.copy(), detections)
-                processed_frame = visualizer.draw_alerts(processed_frame, all_alerts)
-                processed_frame = visualizer.draw_border_lines(processed_frame, settings.BORDER_LINES)
-                processed_frame = visualizer.add_info_overlay(processed_frame, len(detections))
+                # Video analysis complete
+                if processed_frames >= video_frames:
+                    video_summary = f"\nAnalysis complete for video {video_index + 1}: {video['filename']}"
+                    video_results.append(video_summary)
+                    video_results.append(f"Total frames processed: {processed_frames}")
+                    video_results.append(f"Total detections: {detections_count}")
+                    video_results.append(f"Item detections: {item_count}")
+                    video_results.append(f"Border crossings detected: {border_crossings}")
+                    video_results.append(f"Suspicious behavior alerts: {alerts_count - border_crossings}")
+                    video_results.append(f"Total alerts: {alerts_count}")
+                    
+                    for result in video_results[-7:]:  # Add the summary to analysis results
+                        self.add_analysis_result(result)
                 
-                # Display the processed frame
-                self.root.after_idle(lambda f=processed_frame: self.display_video_frame(f))
+                # Mark this video as analyzed and store its results
+                video['analyzed'] = True
+                video['results'] = video_results
                 
-                # Slow down processing to make it viewable
-                time.sleep(0.03)
+                # If analysis was stopped, break out of the loop
+                if not self.video_analysis_running:
+                    self.add_analysis_result("\nAnalysis stopped by user.")
+                    break
             
-            # Analysis complete
-            if processed_frames >= total_frames:
-                self.add_analysis_result("\nAnalysis complete!")
-                self.add_analysis_result(f"Total frames processed: {processed_frames}")
-                self.add_analysis_result(f"Total detections: {detections_count}")
-                self.add_analysis_result(f"Weapon detections: {weapon_detections}")
-                self.add_analysis_result(f"Border crossings detected: {border_crossings}")
-                self.add_analysis_result(f"Suspicious behavior alerts: {alerts_count - border_crossings}")
-                self.add_analysis_result(f"Total alerts: {alerts_count}")
-            else:
-                self.add_analysis_result("\nAnalysis stopped by user.")
-                
+            # All videos processed, show final summary
+            if self.video_analysis_running:
+                self.add_analysis_result("\n=== FINAL ANALYSIS SUMMARY ===")
+                self.add_analysis_result(f"Total videos processed: {sum(1 for v in self.video_files if v['analyzed'])}")
+                self.add_analysis_result(f"Total frames analyzed: {total_frames_processed}")
+                self.add_analysis_result(f"Total detections: {total_detections_count}")
+                self.add_analysis_result(f"Total item detections: {total_item_detections}")
+                self.add_analysis_result(f"Total border crossings: {total_border_crossings}")
+                self.add_analysis_result(f"Total alerts: {total_alerts_count}")
+            
             # Reset UI
             self.root.after_idle(self.reset_video_analysis_ui)
             
@@ -774,12 +931,12 @@ class BorderSurveillanceSystem:
             self.add_analysis_result(f"\nError during analysis: {str(e)}")
             self.root.after_idle(self.reset_video_analysis_ui)
     
-    def update_analysis_progress(self, progress, frame_number):
+    def update_analysis_progress(self, progress, frame_number, video_index):
         """Update the progress display in the UI thread"""
         def update():
             self.video_results_text.config(state=tk.NORMAL)
             self.video_results_text.delete(1.0, 2.0)  # Replace first line
-            self.video_results_text.insert(1.0, f"Analysis in progress: {progress:.1f}% (Frame {frame_number})\n")
+            self.video_results_text.insert(1.0, f"Analyzing video {video_index + 1}/{len(self.video_files)}: {progress:.1f}% (Frame {frame_number})\n")
             self.video_results_text.config(state=tk.DISABLED)
         self.root.after_idle(update)
     
@@ -830,7 +987,7 @@ class BorderSurveillanceSystem:
                 f.write("-" * 20 + "\n")
                 f.write(f"People detected: {self.person_count.get()}\n")
                 f.write(f"Vehicles detected: {self.vehicle_count.get()}\n")
-                f.write(f"Weapons detected: {self.weapon_count.get()}\n")
+                f.write(f"Items detected: {self.item_count.get()}\n")
                 f.write(f"Total alerts: {self.alert_count.get()}\n\n")
                 
                 # Write alert history
@@ -894,9 +1051,10 @@ class BorderSurveillanceSystem:
                 if 'cap' in camera and camera['cap'] is not None:
                     camera['cap'].release()
             
-            # Release video file if open
-            if self.video_file and 'cap' in self.video_file:
-                self.video_file['cap'].release()
+            # Release video files if open
+            for video in self.video_files:
+                if 'cap' in video and video['cap'] is not None:
+                    video['cap'].release()
             
             self.root.destroy()
 

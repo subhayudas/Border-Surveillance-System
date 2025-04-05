@@ -16,13 +16,12 @@ class Visualizer:
             'drone': (255, 255, 0),     # Cyan
             'backpack': (128, 0, 128),  # Purple
             'suitcase': (165, 42, 42),  # Brown
+            'cell phone': (255, 191, 0), # Deep Sky Blue
+            'handbag': (70, 130, 180),  # Steel Blue
             'fence_tampering': (0, 0, 255),  # Red
             'loitering': (0, 255, 255),      # Yellow
             'crawling': (255, 0, 255),       # Magenta
             'knife': (0, 0, 255),            # Red
-            'gun': (255, 0, 0),              # Blue (bright)
-            'rifle': (255, 0, 0),            # Blue (bright)
-            'weapon': (255, 0, 0),           # Blue (bright)
             'border_crossing': (255, 0, 0),  # Red (bright)
             'default': (200, 200, 200)       # Gray
         }

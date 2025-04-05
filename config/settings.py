@@ -24,7 +24,7 @@ DETECTION_THRESHOLD = float(os.getenv("DETECTION_THRESHOLD", 0.5))
 # Classes of interest for detection
 CLASSES_OF_INTEREST = [
     'person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck',
-    'backpack', 'suitcase', 'knife', 'gun', 'rifle', 'drone'
+    'backpack', 'suitcase', 'cell phone', 'handbag', 'knife', 'drone'
 ]
 
 # Border crossing detection settings

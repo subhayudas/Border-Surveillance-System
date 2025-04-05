@@ -275,13 +275,11 @@ class FenceTamperingDetector:
         
         return alerts
 
-# Update the WeaponDetector class to improve gun detection
-
-class WeaponDetector:
-    """Specialized detector for weapons like guns and knives"""
+class ItemDetector:
+    """Specialized detector for items like cell phones and bags"""
     
     def __init__(self):
-        # Load YOLO model - we'll use the same model but focus on weapon classes
+        # Load YOLO model - we'll use the same model but focus on item classes
         model_path = os.path.join(settings.MODELS_DIR, "yolov8n.pt")
         if not os.path.exists(model_path):
             logger.info(f"Model not found at {model_path}, downloading YOLOv8n...")
@@ -298,42 +296,33 @@ class WeaponDetector:
         self.device = "cuda" if settings.USE_GPU and torch.cuda.is_available() else "cpu"
         self.model.to(self.device)
         
-        # Lower threshold for weapons to increase detection rate
+        # Set threshold for detection
         self.threshold = settings.DETECTION_THRESHOLD - 0.1
         
-        # Define weapon classes from COCO dataset - expanded mapping for better detection
-        # Using multiple COCO classes that might resemble weapons
-        self.weapon_classes = {
-            'knife': 43,     # knife in COCO
-            'gun': 67,       # cell phone in COCO (primary gun class)
-            'gun2': 73,      # laptop in COCO (alternative gun class)
-            'rifle': 77,     # remote in COCO (primary rifle class)
-            'rifle2': 28,    # umbrella in COCO (alternative rifle class)
-            'weapon': 39     # bottle in COCO (generic weapon class)
+        # Define item classes from COCO dataset
+        # COCO class indices: cell phone = 67, backpack = 27, handbag = 31, suitcase = 33
+        self.item_classes = {
+            'cell phone': 67,     # cell phone in COCO
+            'backpack': 27,       # backpack in COCO
+            'handbag': 31,        # handbag in COCO
+            'suitcase': 33        # suitcase in COCO
         }
         
-        # Load custom shape detector for gun-like objects
-        self.gun_cascade = None
-        cascade_path = os.path.join(settings.MODELS_DIR, "haarcascade_gun.xml")
-        if os.path.exists(cascade_path):
-            self.gun_cascade = cv2.CascadeClassifier(cascade_path)
-            logger.info("Loaded gun cascade classifier")
-        
-        logger.info("Weapon detector initialized with enhanced gun detection")
+        logger.info("Item detector initialized for cell phones and bags detection")
     
     def detect(self, frame):
         """
-        Detect weapons in a frame using multiple detection methods
+        Detect items (cell phones and bags) in a frame
         
         Args:
             frame: OpenCV image (numpy array)
             
         Returns:
-            list: List of weapon detections in format [x1, y1, x2, y2, confidence, class_id, class_name]
+            list: List of item detections in format [x1, y1, x2, y2, confidence, class_id, class_name]
         """
         detections = []
         
-        # Method 1: YOLO detection
+        # YOLO detection
         results = self.model(frame, conf=self.threshold)
         
         # Extract predictions
@@ -345,75 +334,22 @@ class WeaponDetector:
                 confidence = float(box.conf[0].cpu().numpy())
                 class_id = int(box.cls[0].cpu().numpy())
                 
-                # Check if this is a weapon class
-                weapon_name = None
-                for name, coco_id in self.weapon_classes.items():
+                # Check if this is an item class we're interested in
+                item_name = None
+                for name, coco_id in self.item_classes.items():
                     if class_id == coco_id:
-                        # Normalize names (remove numbers from alternative classes)
-                        base_name = name.rstrip('0123456789')
-                        weapon_name = base_name
+                        item_name = name
                         break
                 
-                if weapon_name:
+                if item_name:
                     detections.append([
                         int(x1), int(y1), int(x2), int(y2), 
-                        confidence, class_id, weapon_name
+                        confidence, class_id, item_name
                     ])
-        
-        # Method 2: Shape-based detection for guns if cascade classifier is available
-        if self.gun_cascade is not None:
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            gun_rects = self.gun_cascade.detectMultiScale(gray, 1.3, 5)
-            
-            for (x, y, w, h) in gun_rects:
-                # Filter out very small detections
-                if w > 30 and h > 30:
-                    # Add as a gun detection with medium confidence
-                    detections.append([
-                        int(x), int(y), int(x+w), int(y+h),
-                        0.6, 999, 'gun'  # Using 999 as a special class ID for cascade detections
-                    ])
-        
-        # Method 3: Custom heuristic for gun-like objects
-        # Convert to grayscale for edge detection
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-        edges = cv2.Canny(blurred, 50, 150)
-        
-        # Find contours
-        contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        
-        for contour in contours:
-            # Filter by contour area
-            if cv2.contourArea(contour) > 500:
-                # Get bounding rectangle
-                x, y, w, h = cv2.boundingRect(contour)
-                
-                # Check aspect ratio typical for guns (length > width)
-                aspect_ratio = float(w) / h if h > 0 else 0
-                
-                # Guns typically have aspect ratio between 2.0 and 4.0
-                if 2.0 < aspect_ratio < 4.0:
-                    # Check if this region overlaps with any existing detection
-                    overlaps = False
-                    for det in detections:
-                        x1, y1, x2, y2 = det[:4]
-                        # Check for overlap
-                        if (x < x2 and x + w > x1 and 
-                            y < y2 and y + h > y1):
-                            overlaps = True
-                            break
-                    
-                    # Only add if it doesn't overlap with existing detections
-                    if not overlaps:
-                        detections.append([
-                            int(x), int(y), int(x+w), int(y+h),
-                            0.5, 998, 'gun'  # Using 998 as a special class ID for shape-based detections
-                        ])
         
         return detections
 
-# Add after the WeaponDetector class
+# Add after the ItemDetector class
 
 class BorderCrossingDetector:
     """Detects unauthorized border crossings"""
