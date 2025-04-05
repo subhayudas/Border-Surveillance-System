@@ -8,23 +8,44 @@ class Visualizer:
     
     def __init__(self):
         self.colors = {
+            # People and vehicles
             'person': (0, 255, 0),      # Green
             'car': (0, 165, 255),       # Orange
             'truck': (0, 0, 255),       # Red
             'motorcycle': (255, 0, 0),  # Blue
             'bicycle': (255, 0, 255),   # Purple
+            
+            # Items
             'drone': (255, 255, 0),     # Cyan
             'backpack': (128, 0, 128),  # Purple
             'suitcase': (165, 42, 42),  # Brown
-            'fence_tampering': (0, 0, 255),  # Red
-            'loitering': (0, 255, 255),      # Yellow
-            'crawling': (255, 0, 255),       # Magenta
-            'knife': (0, 0, 255),            # Red
-            'gun': (255, 0, 0),              # Blue (bright)
-            'rifle': (255, 0, 0),            # Blue (bright)
-            'weapon': (255, 0, 0),           # Blue (bright)
-            'border_crossing': (255, 0, 0),  # Red (bright)
-            'default': (200, 200, 200)       # Gray
+            'handbag': (255, 128, 0),   # Light blue
+            'umbrella': (0, 128, 128),  # Teal
+            'cell phone': (0, 0, 128),  # Dark blue
+            
+            # Weapons
+            'rifle': (0, 0, 255),       # Red
+            'bazooka': (0, 0, 150),     # Dark red
+            'shotgun': (0, 50, 255),    # Red-blue
+            'handgun': (0, 100, 255),   # Blue-red
+            'knife': (255, 0, 100),     # Purple-red
+            'grenade': (0, 50, 50),     # Dark teal
+            'weapon': (100, 0, 100),    # Dark purple
+            'gun': (0, 100, 255),       # For compatibility with older detections
+            
+            # Alerts
+            'fence_tampering': (0, 0, 255),     # Red
+            'loitering': (0, 255, 255),         # Yellow
+            'crawling': (255, 0, 255),          # Magenta
+            'abandoned_item': (255, 0, 0),      # Red
+            'weapon_rifle': (0, 0, 255),        # Red
+            'weapon_bazooka': (0, 0, 150),      # Dark red
+            'weapon_shotgun': (0, 50, 255),     # Red-blue
+            'weapon_handgun': (0, 100, 255),    # Blue-red
+            'weapon_knife': (255, 0, 100),      # Purple-red
+            'weapon_grenade': (0, 50, 50),      # Dark teal
+            'weapon_weapon': (100, 0, 100),     # Dark purple
+            'default': (200, 200, 200)          # Gray
         }
         
         # Font settings
@@ -88,7 +109,7 @@ class Visualizer:
     
     def draw_alerts(self, frame, alerts):
         """
-        Draw visual indicators for alerts
+        Draw alert indicators on the frame
         
         Args:
             frame: OpenCV image to draw on
@@ -99,35 +120,98 @@ class Visualizer:
         """
         for alert in alerts:
             alert_type = alert['type']
+            bbox = alert.get('bbox', None)
+            
+            # Get color for this alert type
             color = self.colors.get(alert_type, self.colors['default'])
             
-            if 'bbox' in alert:
-                # Draw bounding box with thicker line for the alert
-                x1, y1, x2, y2 = alert['bbox']
+            # If we have a bounding box, draw it with thicker lines
+            if bbox:
+                x1, y1, x2, y2 = bbox
                 cv2.rectangle(frame, (x1, y1), (x2, y2), color, 3)
                 
-                # Add alert message
+                # Add flashing effect for active alerts by drawing a second rectangle
+                if int(time.time() * 2) % 2 == 0:  # Flash twice per second
+                    cv2.rectangle(frame, (x1-5, y1-5), (x2+5, y2+5), color, 2)
+                
+                # Draw alert type
+                label_bg_height = 30
+                cv2.rectangle(
+                    frame,
+                    (x1, y1 - label_bg_height),
+                    (x2, y1),
+                    color,
+                    -1
+                )
+                
+                # Format alert text - for weapon alerts, extract the weapon type
+                if alert_type.startswith('weapon_'):
+                    weapon_type = alert_type.split('_')[1].upper()
+                    alert_text = f"WEAPON: {weapon_type}"
+                else:
+                    alert_text = alert_type.upper()
+                
+                # Calculate text size and position
+                text_size, _ = cv2.getTextSize(
+                    alert_text, self.font, self.font_scale * 1.2, self.font_thickness * 2
+                )
+                text_x = x1 + (x2 - x1 - text_size[0]) // 2
+                text_y = y1 - 10
+                
                 cv2.putText(
                     frame,
-                    alert['message'],
-                    (x1, y1 - 10),
+                    alert_text,
+                    (text_x, text_y),
                     self.font,
-                    self.font_scale,
-                    color,
-                    self.font_thickness + 1
+                    self.font_scale * 1.2,
+                    (255, 255, 255),
+                    self.font_thickness * 2
                 )
-            
-            elif alert_type == 'fence_tampering' and 'region_id' in alert:
-                # Draw a warning text about fence tampering
-                cv2.putText(
-                    frame,
-                    f"ALERT: {alert['message']}",
-                    (10, 30 + alert['region_id'] * 30),
-                    self.font,
-                    self.font_scale * 1.5,
-                    color,
-                    self.font_thickness + 1
-                )
+                
+                # Special handling for weapons
+                if alert_type.startswith('weapon_'):
+                    # Draw a danger icon or warning pattern around the weapon
+                    center_x = (x1 + x2) // 2
+                    center_y = (y1 + y2) // 2
+                    radius = max(x2 - x1, y2 - y1) // 2
+                    
+                    # Draw danger icon (concentric circles in warning color)
+                    cv2.circle(frame, (center_x, center_y), radius, color, 2)
+                    cv2.circle(frame, (center_x, center_y), radius * 3 // 4, color, 1)
+                    cv2.circle(frame, (center_x, center_y), radius // 2, color, 1)
+                    
+                    # Draw X in the center
+                    cv2.line(frame, 
+                            (center_x - radius//3, center_y - radius//3),
+                            (center_x + radius//3, center_y + radius//3),
+                            color, 2)
+                    cv2.line(frame, 
+                            (center_x - radius//3, center_y + radius//3),
+                            (center_x + radius//3, center_y - radius//3),
+                            color, 2)
+                
+                # Special handling for drones - draw warning zone
+                elif alert_type == 'drone':
+                    # Draw a warning circle around the drone
+                    center_x = (x1 + x2) // 2
+                    center_y = (y1 + y2) // 2
+                    radius = max(x2 - x1, y2 - y1)
+                    cv2.circle(frame, (center_x, center_y), radius, color, 2)
+                    cv2.circle(frame, (center_x, center_y), radius + 10, color, 1)
+                
+                # Special handling for abandoned items
+                elif alert_type == 'abandoned_item':
+                    # Draw a dashed warning box around the item
+                    center_x = (x1 + x2) // 2
+                    center_y = (y1 + y2) // 2
+                    radius = max(x2 - x1, y2 - y1) // 2
+                    for i in range(0, 360, 30):  # Draw dashed line
+                        angle = i * np.pi / 180
+                        start_x = int(center_x + (radius + 5) * np.cos(angle))
+                        start_y = int(center_y + (radius + 5) * np.sin(angle))
+                        end_x = int(center_x + (radius + 5) * np.cos(angle + np.pi/6))
+                        end_y = int(center_y + (radius + 5) * np.sin(angle + np.pi/6))
+                        cv2.line(frame, (start_x, start_y), (end_x, end_y), color, 2)
         
         return frame
     

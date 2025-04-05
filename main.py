@@ -504,6 +504,11 @@ class BorderSurveillanceSystem:
     
     def update_statistics(self, detections):
         """Update detection statistics for dashboard"""
+        # resetting the counts back to 0
+        self.person_count.set(0)
+        self.vehicle_count.set(0)
+        self.weapon_count.set(0)
+
         person_count = 0
         vehicle_count = 0
         
