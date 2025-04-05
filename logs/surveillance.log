@@ -737,3 +737,14 @@
 2025-04-05 03:53:27,702 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
 2025-04-05 03:53:27,722 - BorderSurveillance - INFO - Weapon detector initialized with enhanced gun detection
 2025-04-05 03:53:27,722 - BorderSurveillance - INFO - Border crossing detector initialized with 2 border lines
+2025-04-05 04:26:54,079 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 04:27:04,870 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 04:27:04,914 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 04:27:04,916 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 04:27:04,936 - BorderSurveillance - INFO - Weapon detector initialized with enhanced gun detection
+2025-04-05 04:27:04,936 - BorderSurveillance - INFO - Border crossing detector initialized with 2 border lines
+2025-04-05 04:27:35,473 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 04:27:35,503 - BorderSurveillance - INFO - Using device: cpu
+2025-04-05 04:27:35,505 - BorderSurveillance - INFO - Loading model from /Users/subhayudas/Desktop/Border-Surveillance-System/models/yolov8n.pt
+2025-04-05 04:27:35,527 - BorderSurveillance - INFO - Weapon detector initialized with enhanced gun detection
+2025-04-05 04:27:35,527 - BorderSurveillance - INFO - Border crossing detector initialized with 2 border lines
