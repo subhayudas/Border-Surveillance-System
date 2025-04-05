@@ -15,12 +15,16 @@ UNKNOWN_FACES_DIR = "unknown_faces"
 os.makedirs(UNKNOWN_FACES_DIR, exist_ok=True)
 
 # Recognition history for temporal smoothing
-HISTORY_FRAMES = 8  # Increased from 5 to 8 frames
-REQUIRED_HISTORY = 4  # Minimum frames needed for stable decision
-KNOWN_FACE_THRESHOLD = 0.5  # 50% of frames must show known face
-UNKNOWN_FACE_THRESHOLD = 0.7  # 70% of frames must show unknown face for saving
+HISTORY_FRAMES = 6  # Reduced from 8 to 6 for faster response
+REQUIRED_HISTORY = 3  # Reduced from 4 to 3 for faster initial recognition
+KNOWN_FACE_THRESHOLD = 0.4  # Reduced from 0.5 to 0.4 (40% of frames must show known face)
+UNKNOWN_FACE_THRESHOLD = 0.8  # Increased from 0.7 to 0.8 (more strict for unknown faces)
 MIN_CONFIDENCE = 25  # Base confidence threshold
-MIN_MARGIN = 1.5  # Reduced margin requirement
+MIN_MARGIN = 1.5  # Margin requirement
+
+# Clean up old face histories periodically
+MAX_HISTORY_AGE = 2.0  # seconds
+
 recognition_history = {}  # Dictionary to store recognition history for each face
 
 # Initialize the face detector and shape predictor
@@ -123,6 +127,17 @@ save_count = 0
 fps = 0
 start_time = cv2.getTickCount()
 
+def clean_old_histories():
+    """Remove face histories that haven't been updated recently"""
+    current_time = datetime.now()
+    keys_to_remove = []
+    for face_key, data in recognition_history.items():
+        age = (current_time - data['last_seen']).total_seconds()
+        if age > MAX_HISTORY_AGE:
+            keys_to_remove.append(face_key)
+    for key in keys_to_remove:
+        del recognition_history[key]
+
 while True:
     # Grab a single frame of video
     ret, frame = video_capture.read()
@@ -146,6 +161,10 @@ while True:
             print(f"\nFPS: {fps:.1f}")
 
     try:
+        # Clean up old face histories periodically
+        if frame_count % 30 == 0:  # Every 30 frames
+            clean_old_histories()
+            
         # Convert BGR to RGB for dlib
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         
@@ -200,7 +219,7 @@ while True:
                     
                     # Add current recognition to history
                     current_recognition = {
-                        'name': best_name if best_similarity > 25 and margin > 2 else "Unknown",
+                        'name': best_name if best_similarity > MIN_CONFIDENCE and margin > MIN_MARGIN else "Unknown",
                         'confidence': best_similarity,
                         'margin': margin
                     }
@@ -208,28 +227,25 @@ while True:
                     
                     # Calculate the most common name in recent history
                     recent_history = recognition_history[face_key]['history']
-                    if len(recent_history) >= REQUIRED_HISTORY:  # Wait for enough history
-                        # Count known face recognitions
-                        known_faces = [r for r in recent_history if r['name'] != "Unknown"]
-                        if len(known_faces) >= len(recent_history) * KNOWN_FACE_THRESHOLD:  # If enough frames show a known face
-                            # Get the most common name among known faces
+                    if len(recent_history) >= REQUIRED_HISTORY:
+                        # Count known face recognitions with good confidence
+                        known_faces = [r for r in recent_history if r['name'] != "Unknown" and r['confidence'] > MIN_CONFIDENCE]
+                        if len(known_faces) >= len(recent_history) * KNOWN_FACE_THRESHOLD:
+                            # Get the most common name among recent known faces
                             name_counts = {}
-                            for r in known_faces:
-                                name_counts[r['name']] = name_counts.get(r['name'], 0) + 1
+                            # Weight recent recognitions more heavily
+                            for i, r in enumerate(known_faces):
+                                weight = (i + 1) / len(known_faces)  # More recent = higher weight
+                                name_counts[r['name']] = name_counts.get(r['name'], 0) + weight
                             
                             most_common_name = max(name_counts.items(), key=lambda x: x[1])[0]
-                            # Use the most confident recognition for this name
+                            # Use the most recent high-confidence recognition for this name
                             matching_recognitions = [r for r in known_faces if r['name'] == most_common_name]
                             best_recognition = max(matching_recognitions, key=lambda x: x['confidence'])
                             name = best_recognition['name']
                             confidence = best_recognition['confidence']
                         else:
                             name = "Unknown"
-                            confidence = best_similarity
-                    else:
-                        # Not enough history yet, use current frame with lower requirements
-                        if best_similarity > MIN_CONFIDENCE and margin > MIN_MARGIN:
-                            name = best_name
                             confidence = best_similarity
                     
                     if debug_mode:
