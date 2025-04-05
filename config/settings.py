@@ -75,8 +75,23 @@ MQTT_TOPIC = os.getenv("MQTT_TOPIC", "border/alerts")
 
 # Geographical settings
 GPS_ENABLED = os.getenv("GPS_ENABLED", "false").lower() == "true"
-DEFAULT_LAT = float(os.getenv("DEFAULT_LAT", 0.0))
-DEFAULT_LON = float(os.getenv("DEFAULT_LON", 0.0))
+DEFAULT_LAT = float(os.getenv("DEFAULT_LAT", 23.81606))
+DEFAULT_LON = float(os.getenv("DEFAULT_LON", 86.44212))
+
+# Map settings
+MAP_UPDATE_INTERVAL = int(os.getenv("MAP_UPDATE_INTERVAL", 5))  # in seconds
+MAP_TILE_PROVIDER = os.getenv("MAP_TILE_PROVIDER", "OpenStreetMap")
+MAP_ZOOM_LEVEL = int(os.getenv("MAP_ZOOM_LEVEL", 15))
+MAP_OUTPUT_FILE = os.path.join(BASE_DIR, "output", "detection_map.html")
+GPSD_HOST = os.getenv("GPSD_HOST", "localhost")
+GPSD_PORT = int(os.getenv("GPSD_PORT", 2947))
+HEATMAP_ENABLED = os.getenv("HEATMAP_ENABLED", "true").lower() == "true"
+
+# Map border settings
+MAP_BORDERS = []  # List will be populated with border definitions added from UI
+MAP_BORDERS_ENABLED = os.getenv("MAP_BORDERS_ENABLED", "true").lower() == "true"
+DEFAULT_BORDER_COLOR = os.getenv("DEFAULT_BORDER_COLOR", "red")
+DEFAULT_BORDER_WEIGHT = int(os.getenv("DEFAULT_BORDER_WEIGHT", 3))
 
 # Performance settings for edge deployment
 USE_GPU = os.getenv("USE_GPU", "true").lower() == "true"

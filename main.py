@@ -7,11 +7,28 @@ import time
 import threading
 from datetime import datetime
 import numpy as np
+import webbrowser
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger('BorderSurveillance')
 
 # Import detection and visualization modules
 from src.detection import ObjectDetector, BehaviorAnalyzer, FenceTamperingDetector, ItemDetector, BorderCrossingDetector
-from src.visualization import Visualizer
+from src.visualization import Visualizer, GeoMapVisualizer
 from config import settings
+
+# Optional MQTT support - don't fail if not available
+try:
+    import paho.mqtt.client as mqtt
+    mqtt_available = True
+except ImportError:
+    mqtt_available = False
+    logger.warning("MQTT not available. Install paho-mqtt for alert distribution.")
 
 class BorderSurveillanceSystem:
     def __init__(self):
@@ -22,7 +39,32 @@ class BorderSurveillanceSystem:
         self.video_files = []  # List to store multiple uploaded videos
         self.current_video_index = 0  # Index of the currently displayed video
         self.video_player = None  # For video playback
+        self.geo_map_visualizer = GeoMapVisualizer()  # Initialize geographical map visualizer
+        
+        # Try to setup MQTT client for alerts if enabled
+        self.mqtt_client = None
+        if settings.DASHBOARD_ALERTS_ENABLED and mqtt_available:
+            try:
+                self.setup_mqtt()
+            except Exception as e:
+                logger.error(f"Failed to connect to MQTT broker: {str(e)}")
+        
         self.setup_ui()
+        
+    def setup_mqtt(self):
+        """Setup MQTT client for alert distribution"""
+        if not mqtt_available:
+            return
+            
+        try:
+            # Use the new MQTT client API version
+            self.mqtt_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+            self.mqtt_client.connect(settings.MQTT_BROKER, settings.MQTT_PORT, 60)
+            self.mqtt_client.loop_start()
+            logger.info(f"Connected to MQTT broker at {settings.MQTT_BROKER}:{settings.MQTT_PORT}")
+        except Exception as e:
+            logger.error(f"Failed to connect to MQTT broker: {str(e)}")
+            self.mqtt_client = None
         
     def setup_ui(self):
         # Create main window with dark theme
@@ -86,6 +128,10 @@ class BorderSurveillanceSystem:
         self.dashboard_tab = ttk.Frame(self.tab_control)
         self.tab_control.add(self.dashboard_tab, text="Dashboard")
         
+        # Geographical Map tab
+        self.map_tab = ttk.Frame(self.tab_control)
+        self.tab_control.add(self.map_tab, text="Geo Map")
+        
         # Settings tab
         self.settings_tab = ttk.Frame(self.tab_control)
         self.tab_control.add(self.settings_tab, text="Settings")
@@ -94,6 +140,7 @@ class BorderSurveillanceSystem:
         self.setup_monitoring_tab()
         self.setup_video_tab()
         self.setup_dashboard_tab()
+        self.setup_map_tab()
         self.setup_settings_tab()
         
     def setup_monitoring_tab(self):
@@ -214,6 +261,73 @@ class BorderSurveillanceSystem:
         # Export button
         ttk.Button(self.dashboard_tab, text="Export Report", command=self.export_report).pack(pady=10)
         
+    def setup_map_tab(self):
+        """Setup the geographical map tab"""
+        # Control panel
+        control_frame = ttk.Frame(self.map_tab)
+        control_frame.pack(fill=tk.X, pady=10)
+        
+        # Map controls
+        map_control_frame = ttk.LabelFrame(control_frame, text="Map Controls")
+        map_control_frame.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
+        
+        # Refresh map button
+        self.refresh_map_button = ttk.Button(map_control_frame, text="Refresh Map", command=self.refresh_map)
+        self.refresh_map_button.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # Open in browser button (kept for compatibility)
+        self.open_browser_button = ttk.Button(map_control_frame, text="Open in Browser", command=self.open_map_in_browser)
+        self.open_browser_button.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # Clear detections button
+        self.clear_detections_button = ttk.Button(map_control_frame, text="Clear Detections", command=self.clear_map_detections)
+        self.clear_detections_button.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # Toggle heatmap button
+        self.heatmap_var = tk.BooleanVar(value=True)
+        self.heatmap_checkbutton = ttk.Checkbutton(
+            map_control_frame, 
+            text="Show Heatmap", 
+            variable=self.heatmap_var, 
+            command=self.toggle_heatmap
+        )
+        self.heatmap_checkbutton.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # GPS status
+        self.gps_status_frame = ttk.LabelFrame(control_frame, text="GPS Status")
+        self.gps_status_frame.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
+        
+        self.gps_status_label = ttk.Label(self.gps_status_frame, text="GPS: Connecting...")
+        self.gps_status_label.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        self.location_label = ttk.Label(self.gps_status_frame, text="Location: N/A")
+        self.location_label.pack(side=tk.LEFT, padx=5, pady=5)
+        
+        # Create a frame to display the map directly
+        self.map_display_frame = ttk.LabelFrame(self.map_tab, text="Real-time Detection Map")
+        self.map_display_frame.pack(fill=tk.BOTH, expand=True, pady=10, padx=5)
+        
+        # Label to hold the map image
+        self.map_display_label = ttk.Label(self.map_display_frame)
+        self.map_display_label.pack(fill=tk.BOTH, expand=True)
+        
+        # Create a frame to display the map info (kept smaller now that we show the map)
+        self.map_info_frame = ttk.LabelFrame(self.map_tab, text="Map Information")
+        self.map_info_frame.pack(fill=tk.X, pady=10)
+        
+        self.map_info_text = scrolledtext.ScrolledText(self.map_info_frame, height=4)
+        self.map_info_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        self.map_info_text.config(state=tk.NORMAL)
+        self.map_info_text.insert(tk.END, "Geographic Map Initialized. Detections will be displayed on the map with your current location.\n")
+        self.map_info_text.insert(tk.END, "The map updates automatically as new detections are found.\n")
+        self.map_info_text.config(state=tk.DISABLED)
+        
+        # Start GPS status update thread
+        threading.Thread(target=self.update_gps_status, daemon=True).start()
+        
+        # Start map update thread
+        threading.Thread(target=self.update_map_display, daemon=True).start()
+        
     def setup_settings_tab(self):
         settings_frame = ttk.Frame(self.settings_tab)
         settings_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -244,6 +358,39 @@ class BorderSurveillanceSystem:
         self.border_direction_var = tk.StringVar(value="both")
         ttk.Combobox(border_frame, textvariable=self.border_direction_var, 
                     values=["north_to_south", "south_to_north", "both"]).grid(row=1, column=1, padx=5, pady=5)
+        
+        # Map settings
+        map_settings_frame = ttk.LabelFrame(settings_frame, text="Map Settings")
+        map_settings_frame.pack(fill=tk.X, pady=10)
+        
+        # Default location setting
+        ttk.Label(map_settings_frame, text="Default Latitude:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
+        self.default_lat_var = tk.StringVar(value=str(settings.DEFAULT_LAT))
+        ttk.Entry(map_settings_frame, textvariable=self.default_lat_var, width=15).grid(row=0, column=1, padx=5, pady=5)
+        
+        ttk.Label(map_settings_frame, text="Default Longitude:").grid(row=0, column=2, sticky=tk.W, padx=5, pady=5)
+        self.default_lon_var = tk.StringVar(value=str(settings.DEFAULT_LON))
+        ttk.Entry(map_settings_frame, textvariable=self.default_lon_var, width=15).grid(row=0, column=3, padx=5, pady=5)
+        
+        # Map zoom level
+        ttk.Label(map_settings_frame, text="Map Zoom Level:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
+        self.map_zoom_var = tk.IntVar(value=settings.MAP_ZOOM_LEVEL)
+        zoom_scale = ttk.Scale(map_settings_frame, from_=5, to=18, variable=self.map_zoom_var, orient=tk.HORIZONTAL, length=200)
+        zoom_scale.grid(row=1, column=1, columnspan=2, padx=5, pady=5)
+        ttk.Label(map_settings_frame, textvariable=self.map_zoom_var).grid(row=1, column=3, padx=5, pady=5)
+        
+        # Map tile provider
+        ttk.Label(map_settings_frame, text="Map Tile Provider:").grid(row=2, column=0, sticky=tk.W, padx=5, pady=5)
+        self.map_tile_var = tk.StringVar(value=settings.MAP_TILE_PROVIDER)
+        ttk.Combobox(map_settings_frame, textvariable=self.map_tile_var, 
+                    values=["OpenStreetMap", "Stamen Terrain", "Stamen Toner", "CartoDB positron"]).grid(row=2, column=1, columnspan=3, padx=5, pady=5, sticky=tk.W)
+        
+        # Update interval
+        ttk.Label(map_settings_frame, text="Map Update Interval (seconds):").grid(row=3, column=0, sticky=tk.W, padx=5, pady=5)
+        self.map_update_var = tk.IntVar(value=settings.MAP_UPDATE_INTERVAL)
+        update_scale = ttk.Scale(map_settings_frame, from_=1, to=30, variable=self.map_update_var, orient=tk.HORIZONTAL, length=200)
+        update_scale.grid(row=3, column=1, columnspan=2, padx=5, pady=5)
+        ttk.Label(map_settings_frame, textvariable=self.map_update_var).grid(row=3, column=3, padx=5, pady=5)
         
         # Classes of interest
         classes_frame = ttk.LabelFrame(settings_frame, text="Classes of Interest")
@@ -432,86 +579,109 @@ class BorderSurveillanceSystem:
         self.add_alert("System", "Surveillance stopped")
         
     def update_frames(self):
+        """Update frames from all active cameras"""
         if not self.is_running:
             return
-            
+        
         for camera_id in self.active_feeds:
-            camera = self.cameras[camera_id]
-            ret, frame = camera['cap'].read()
-            
-            if ret:
-                # Initialize object detector if not already done
-                if 'detector' not in camera:
-                    camera['detector'] = ObjectDetector()
-                    camera['behavior_analyzer'] = BehaviorAnalyzer()
-                    camera['item_detector'] = ItemDetector()
-                    camera['border_detector'] = BorderCrossingDetector()  # Add border detector
-                    camera['visualizer'] = Visualizer()
+            if camera_id in self.cameras:
+                camera = self.cameras[camera_id]
                 
-                # Process frame with object detection
-                general_detections = camera['detector'].detect(frame)
-                detected_items = camera['item_detector'].detect(frame)
+                # Check if camera is a video file that has ended
+                if camera.get('is_video', False) and camera.get('cap') is not None:
+                    if not camera['cap'].isOpened():
+                        continue
                 
-                # Check for items
-                if detected_items:
-                    general_detections.extend(detected_items)
-                    # Update item count
-                    current_count = int(self.item_count.get())
-                    self.item_count.set(str(current_count + len(detected_items)))
+                # Read frame
+                ret, frame = camera['cap'].read()
+                
+                if not ret:
+                    # Handle video end or camera error
+                    if camera.get('is_video', False):
+                        # Restart video from beginning
+                        camera['cap'].set(cv2.CAP_PROP_POS_FRAMES, 0)
+                        ret, frame = camera['cap'].read()
+                        if not ret:
+                            continue
+                    else:
+                        continue
+                
+                # Resize frame for consistent display
+                frame = cv2.resize(frame, (settings.DISPLAY_WIDTH, settings.DISPLAY_HEIGHT))
+                
+                # Make a deep copy for detection to avoid modification issues
+                detection_frame = frame.copy()
+                
+                # Perform object detection using separate thread for better UI responsiveness
+                def process_frame(camera_id, frame):
+                    # Perform detection
+                    detector = ObjectDetector()
+                    detections = detector.detect(frame)
                     
-                    # Add item alert
-                    for item in detected_items:
-                        item_type = item[6]  # class_name
-                        self.add_alert("ITEM ALERT", f"{item_type} detected in {camera['name']}")
+                    # Analyze behaviors
+                    behavior_analyzer = BehaviorAnalyzer()
+                    behavior_alerts = behavior_analyzer.analyze(detections, frame)
+                    
+                    # Check for border crossings
+                    border_detector = BorderCrossingDetector()
+                    border_alerts = border_detector.detect(detections, frame)
+                    
+                    # Check for fence tampering
+                    fence_detector = FenceTamperingDetector()
+                    fence_alerts = fence_detector.detect(frame)
+                    
+                    # Check for prohibited items
+                    item_detector = ItemDetector()
+                    item_alerts = item_detector.detect(detections, frame)
+                    
+                    # Combine all alerts
+                    alerts = behavior_alerts + border_alerts + fence_alerts + item_alerts
+                    
+                    # Add detections to the geographical map
+                    if hasattr(self, 'geo_map_visualizer'):
+                        for detection in detections:
+                            _, _, _, _, confidence, _, class_name = detection
+                            # Add each detection to the geo map
+                            self.geo_map_visualizer.add_detection(class_name, confidence=confidence)
+                            
+                            # Update map info when a new detection is added
+                            self.update_map_info(f"New detection added to map: {class_name} (conf: {confidence:.2f})")
+                    
+                    # Update statistics with new detections
+                    self.update_statistics(detections)
+                    
+                    # Process alerts
+                    for alert in alerts:
+                        is_critical = alert.get('critical', False)
+                        self.add_alert(alert['type'], alert['message'], is_critical)
+                    
+                    # Visualize results
+                    visualizer = Visualizer()
+                    
+                    # Draw detection boxes
+                    frame_with_detections = visualizer.draw_detections(frame.copy(), detections)
+                    
+                    # Draw alerts if any
+                    if alerts:
+                        frame_with_detections = visualizer.draw_alerts(frame_with_detections, alerts)
+                    
+                    # Draw borders
+                    frame_with_detections = visualizer.draw_border_lines(frame_with_detections, settings.BORDER_LINES)
+                    
+                    # Draw fence regions if defined
+                    frame_with_detections = visualizer.draw_fence_regions(frame_with_detections, settings.FENCE_REGIONS)
+                    
+                    # Add info overlay
+                    frame_with_detections = visualizer.add_info_overlay(frame_with_detections, len(detections))
+                    
+                    # Update the display
+                    self.update_camera_display(camera_id, frame_with_detections)
                 
-                # Analyze behaviors
-                behavior_alerts = camera['behavior_analyzer'].update(general_detections, frame)
-                
-                # Detect border crossings
-                border_alerts = camera['border_detector'].detect(general_detections, frame)
-                if border_alerts:
-                    for alert in border_alerts:
-                        self.add_alert("BORDER CROSSING", f"{alert['message']} in {camera['name']}", is_critical=True)
-                        
-                        # Update alert count
-                        current_count = int(self.alert_count.get())
-                        self.alert_count.set(str(current_count + 1))
-                
-                # Process behavior alerts
-                if behavior_alerts:
-                    for alert in behavior_alerts:
-                        self.add_alert(f"Behavior Alert ({camera['name']})", alert['message'])
-                        
-                        # Update alert count
-                        current_count = int(self.alert_count.get())
-                        self.alert_count.set(str(current_count + 1))
-                
-                # Update statistics
-                self.update_statistics(general_detections)
-                
-                # Combine all alerts
-                all_alerts = behavior_alerts + border_alerts
-                
-                # Visualize results
-                processed_frame = camera['visualizer'].draw_detections(frame.copy(), general_detections)
-                processed_frame = camera['visualizer'].draw_alerts(processed_frame, all_alerts)
-                processed_frame = camera['visualizer'].draw_border_lines(processed_frame, settings.BORDER_LINES)
-                processed_frame = camera['visualizer'].add_info_overlay(processed_frame, len(general_detections))
-                
-                # Resize to fixed display resolution
-                processed_frame = cv2.resize(processed_frame, (settings.DISPLAY_WIDTH, settings.DISPLAY_HEIGHT))
-                
-                # Convert to format suitable for tkinter
-                cv_image = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
-                pil_image = Image.fromarray(cv_image)
-                
-                # Create PhotoImage
-                tk_image = ImageTk.PhotoImage(image=pil_image)
-                camera['label'].configure(image=tk_image)
-                camera['label'].image = tk_image  # Keep a reference
+                # Start processing thread
+                threading.Thread(target=process_frame, args=(camera_id, detection_frame), daemon=True).start()
         
         # Schedule the next update
-        self.root.after(30, self.update_frames)
+        self.root.after(10, self.update_frames)
     
     def update_statistics(self, detections):
         """Update detection statistics for dashboard"""
@@ -836,7 +1006,7 @@ class BorderSurveillanceSystem:
                     # Behavior analysis
                     behavior_alerts = behavior_analyzer.update(general_detections, frame)
                     
-                    # Border crossing detection
+                    # Detect border crossings
                     border_alerts = border_detector.detect(general_detections, frame)
                     if border_alerts:
                         border_crossings += len(border_alerts)
@@ -1038,6 +1208,23 @@ class BorderSurveillanceSystem:
             }
         ]
         
+        # Update map settings
+        try:
+            settings.DEFAULT_LAT = float(self.default_lat_var.get())
+            settings.DEFAULT_LON = float(self.default_lon_var.get())
+            settings.MAP_ZOOM_LEVEL = int(self.map_zoom_var.get())
+            settings.MAP_TILE_PROVIDER = self.map_tile_var.get()
+            settings.MAP_UPDATE_INTERVAL = int(self.map_update_var.get())
+            
+            # Update the map visualizer with new settings if it exists
+            if hasattr(self, 'geo_map_visualizer'):
+                self.geo_map_visualizer.location = [settings.DEFAULT_LAT, settings.DEFAULT_LON]
+                # Force map update
+                self.refresh_map()
+        except ValueError as e:
+            messagebox.showerror("Invalid Input", f"Please enter valid numeric values for map settings: {str(e)}")
+            return
+        
         messagebox.showinfo("Success", "Settings saved successfully")
     
     def on_closing(self):
@@ -1057,6 +1244,125 @@ class BorderSurveillanceSystem:
                     video['cap'].release()
             
             self.root.destroy()
+    
+    def update_gps_status(self):
+        """Update GPS status periodically"""
+        while True:
+            if hasattr(self, 'geo_map_visualizer'):
+                if self.geo_map_visualizer.connected_to_gps:
+                    status_text = "GPS: Connected"
+                    location_text = f"Location: {self.geo_map_visualizer.location[0]:.6f}, {self.geo_map_visualizer.location[1]:.6f}"
+                else:
+                    status_text = "GPS: Not Connected"
+                    location_text = f"Location: Using Default ({settings.DEFAULT_LAT:.6f}, {settings.DEFAULT_LON:.6f})"
+                
+                # Update labels using thread-safe method
+                self.root.after(0, lambda: self.update_status_labels(status_text, location_text))
+            
+            time.sleep(2)  # Update every 2 seconds
+    
+    def update_status_labels(self, status_text, location_text):
+        """Update GPS status labels (thread-safe)"""
+        if hasattr(self, 'gps_status_label'):
+            self.gps_status_label.config(text=status_text)
+        if hasattr(self, 'location_label'):
+            self.location_label.config(text=location_text)
+    
+    def refresh_map(self):
+        """Refresh the geographical map"""
+        if hasattr(self, 'geo_map_visualizer'):
+            self.geo_map_visualizer.update_map()
+            messagebox.showinfo("Map Refreshed", "The geographical map has been updated.")
+            
+            # Update map info
+            self.update_map_info("Map manually refreshed.")
+    
+    def open_map_in_browser(self):
+        """Open the geographical map in a web browser"""
+        if hasattr(self, 'geo_map_visualizer'):
+            self.geo_map_visualizer.open_map_in_browser()
+            
+            # Update map info
+            self.update_map_info("Map opened in browser.")
+    
+    def clear_map_detections(self):
+        """Clear all detection points from the map"""
+        if hasattr(self, 'geo_map_visualizer'):
+            self.geo_map_visualizer.detection_points = []
+            self.geo_map_visualizer.update_map()
+            messagebox.showinfo("Map Cleared", "All detection points have been cleared from the map.")
+            
+            # Update map info
+            self.update_map_info("All detection points cleared from map.")
+    
+    def update_map_info(self, message):
+        """Update the map information text box"""
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        if hasattr(self, 'map_info_text'):
+            self.map_info_text.config(state=tk.NORMAL)
+            self.map_info_text.insert(tk.END, f"[{current_time}] {message}\n")
+            self.map_info_text.see(tk.END)  # Scroll to end
+            self.map_info_text.config(state=tk.DISABLED)
+
+    def update_camera_display(self, camera_id, frame):
+        """Update the camera display with processed frame (thread-safe)"""
+        try:
+            if camera_id in self.cameras and 'label' in self.cameras[camera_id]:
+                # Convert to format suitable for tkinter
+                cv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                pil_image = Image.fromarray(cv_image)
+                
+                # Create PhotoImage
+                tk_image = ImageTk.PhotoImage(image=pil_image)
+                
+                # Update the label in a thread-safe way
+                def update_label():
+                    self.cameras[camera_id]['label'].configure(image=tk_image)
+                    self.cameras[camera_id]['label'].image = tk_image  # Keep a reference
+                
+                self.root.after(0, update_label)
+        except Exception as e:
+            print(f"Error updating camera display: {str(e)}")
+
+    def update_map_display(self):
+        """Thread to update the map display in the dashboard"""
+        while True:
+            if hasattr(self, 'geo_map_visualizer') and hasattr(self, 'map_display_label'):
+                try:
+                    # Generate a map image
+                    map_width = self.map_display_label.winfo_width() or 800
+                    map_height = self.map_display_label.winfo_height() or 600
+                    
+                    # Only update if we have a reasonable size
+                    if map_width > 50 and map_height > 50:
+                        map_image = self.geo_map_visualizer.get_map_image(map_width, map_height)
+                        
+                        # Update the label with the new map image
+                        self.root.after(0, lambda: self.update_map_label(map_image))
+                        
+                except Exception as e:
+                    print(f"Error updating map display: {str(e)}")
+            
+            # Update every few seconds
+            time.sleep(5)
+    
+    def update_map_label(self, map_image):
+        """Update the map label with new image (thread-safe)"""
+        if hasattr(self, 'map_display_label'):
+            self.map_display_label.configure(image=map_image)
+            self.map_display_label.image = map_image  # Keep a reference
+
+    def toggle_heatmap(self):
+        """Toggle the heatmap display on/off"""
+        if hasattr(self, 'geo_map_visualizer'):
+            # Force map update
+            self.refresh_map()
+            
+            # Update map info
+            if self.heatmap_var.get():
+                self.update_map_info("Heatmap visualization enabled.")
+            else:
+                self.update_map_info("Heatmap visualization disabled.")
 
 if __name__ == "__main__":
     app = BorderSurveillanceSystem()

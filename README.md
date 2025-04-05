@@ -12,6 +12,45 @@ An autonomous surveillance system that detects, tracks, and verifies threats in 
 - **Video Analysis**: Upload and analyze pre-recorded videos for retrospective threat assessment
 - **Interactive Dashboard**: Real-time statistics and alert history visualization
 
+## Geographical Map Features
+
+The Border Surveillance System now includes real-time geographical mapping capabilities that display detections on an interactive map. This feature uses your device's actual GPS location to accurately place detections on the map.
+
+### Features:
+- Real-time GPS tracking of your current location
+- Automatic mapping of detections with their precise coordinates
+- Interactive map interface with zoom and measure capabilities
+- Color-coded detection markers based on detection type
+- Detailed information popups for each detection
+
+### GPS Configuration:
+To use the real-time GPS tracking:
+1. Connect a GPS device to your computer
+2. Run `./run.sh --setup-gps` to install and configure the GPS daemon
+3. Make sure `GPS_ENABLED=true` is set in your `.env` file
+
+If no GPS device is connected, the system will use the default coordinates specified in the `.env` file.
+
+### Using the Map:
+1. Start the application with `./run.sh`
+2. Navigate to the "Geo Map" tab
+3. Click "Open in Browser" to view the interactive map
+4. Detections will automatically appear on the map as they are detected
+5. Use "Refresh Map" to manually update the map
+6. Use "Clear Detections" to remove all detection markers
+
+### Customization:
+You can customize the map settings in the `.env` file:
+```
+# GPS and Map settings
+GPS_ENABLED=true
+DEFAULT_LAT=37.7749  # Default latitude if GPS is not available
+DEFAULT_LON=-122.4194  # Default longitude if GPS is not available
+MAP_UPDATE_INTERVAL=5  # How often to update the map (in seconds)
+MAP_TILE_PROVIDER=OpenStreetMap  # Map tile provider
+MAP_ZOOM_LEVEL=15  # Default zoom level
+```
+
 ## Project Structure
 
 ```

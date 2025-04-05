@@ -1,7 +1,65 @@
 import cv2
 import numpy as np
 import time
-from datetime import datetime
+import os
+import folium
+from folium.plugins import MarkerCluster, Fullscreen, MeasureControl, HeatMap
+from datetime import datetime, timedelta
+import webbrowser
+import threading
+import gpsd
+from config import settings
+import io
+from PIL import Image, ImageTk, ImageDraw, ImageFont
+import matplotlib
+# Use Agg backend which doesn't require GUI
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('MapVisualizer')
+
+# Mock GPSD implementation for testing when no GPS device is available
+class MockGPSD:
+    def __init__(self, initial_lat=37.7749, initial_lon=-122.4194):
+        self.lat = initial_lat
+        self.lon = initial_lon
+        self.mode = 3  # 3D fix
+        self.movement_speed = 0.0001  # Movement per update
+        self.movement_direction = 0  # Angle in degrees
+        self.last_update = time.time()
+    
+    def get_current(self):
+        # Simulate movement by slightly changing coordinates
+        current_time = time.time()
+        time_diff = current_time - self.last_update
+        
+        # Change direction occasionally
+        if np.random.random() < 0.1:
+            self.movement_direction = (self.movement_direction + np.random.uniform(-30, 30)) % 360
+        
+        # Calculate new position based on direction and speed
+        self.lat += np.sin(np.radians(self.movement_direction)) * self.movement_speed * time_diff
+        self.lon += np.cos(np.radians(self.movement_direction)) * self.movement_speed * time_diff
+        self.last_update = current_time
+        
+        return self
+
+# Override gpsd.connect to use mock when real connection fails
+original_gpsd_connect = gpsd.connect
+
+def mock_gpsd_connect(host="localhost", port=2947):
+    try:
+        original_gpsd_connect(host, port)
+        print("Connected to real GPSD service")
+    except Exception as e:
+        print(f"Using mock GPSD due to connection error: {str(e)}")
+        gpsd.get_current = lambda: MockGPSD(settings.DEFAULT_LAT, settings.DEFAULT_LON)
+
+# Replace gpsd.connect with our mock version
+gpsd.connect = mock_gpsd_connect
 
 class Visualizer:
     """Handles visualization of detections and alerts on video frames"""
@@ -353,3 +411,450 @@ class Visualizer:
                 )
         
         return frame
+
+class GeoMapVisualizer:
+    """Handles visualization of detections on geographical maps"""
+    
+    def __init__(self):
+        """Initialize the geographical map visualizer"""
+        self.location = [settings.DEFAULT_LAT, settings.DEFAULT_LON]
+        self.detection_points = []
+        self.last_update_time = 0
+        self.map = None
+        self.connected_to_gps = False
+        self.init_map()
+        self.detection_history = []  # Store historical detection data
+        self.time_filters = {
+            'last_hour': datetime.now() - timedelta(hours=1),
+            'last_day': datetime.now() - timedelta(days=1),
+            'last_week': datetime.now() - timedelta(weeks=1),
+            'all': None
+        }
+        self.active_time_filter = 'all'
+        self.detection_types = set()  # Tracks all types of detections seen
+        self.detection_type_filters = set()  # Active filters for detection types
+        
+    def init_map(self):
+        """Initialize the map with default settings"""
+        try:
+            self.map = folium.Map(
+                location=self.location,
+                zoom_start=settings.MAP_ZOOM_LEVEL,
+                tiles=settings.MAP_TILE_PROVIDER
+            )
+            
+            # Add fullscreen and measurement controls
+            Fullscreen().add_to(self.map)
+            MeasureControl().add_to(self.map)
+            
+            # Add marker cluster for detections
+            self.marker_cluster = MarkerCluster().add_to(self.map)
+            
+            # Create feature groups for different detection types
+            self.people_layer = folium.FeatureGroup(name="People").add_to(self.map)
+            self.vehicles_layer = folium.FeatureGroup(name="Vehicles").add_to(self.map)
+            self.items_layer = folium.FeatureGroup(name="Items").add_to(self.map)
+            self.alerts_layer = folium.FeatureGroup(name="Alerts", show=True).add_to(self.map)
+            
+            # Create a layer for current location
+            self.location_layer = folium.FeatureGroup(name="Current Location").add_to(self.map)
+            
+            # Add heatmap layer
+            self.heatmap_layer = folium.FeatureGroup(name="Detection Heatmap").add_to(self.map)
+            
+            # Add layer control
+            folium.LayerControl().add_to(self.map)
+            
+            # Add searchable legend
+            self._add_legend_control()
+            
+            # Save initial map
+            self.save_map()
+            
+            # Try to connect to GPS
+            self.connect_to_gps()
+            
+        except Exception as e:
+            print(f"Error initializing map: {str(e)}")
+    
+    def _add_legend_control(self):
+        """Add a custom legend control to the map"""
+        legend_html = """
+        <div id="mapLegend" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; bottom: 30px; right: 10px; max-width: 250px;">
+            <h4 style="margin-top: 0;">Map Legend</h4>
+            <div><i style="background: #00FF00; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Person</div>
+            <div><i style="background: #FF6600; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Vehicle</div>
+            <div><i style="background: #0066FF; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Item</div>
+            <div><i style="background: #FF0000; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Alert</div>
+            <div><i style="background: blue; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Current Location</div>
+            <div><i style="background: red; width: 20px; height: 3px; display: inline-block;"></i> Border</div>
+        </div>
+        """
+        self.map.get_root().html.add_child(folium.Element(legend_html))
+    
+    def connect_to_gps(self):
+        """Connect to GPSD service"""
+        try:
+            gpsd.connect(settings.GPSD_HOST, settings.GPSD_PORT)
+            self.connected_to_gps = True
+            
+            # Start updating location in a background thread
+            threading.Thread(target=self.update_location_thread, daemon=True).start()
+            logger.info("Connected to GPS service")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to connect to GPS: {str(e)}")
+            self.connected_to_gps = False
+            return False
+    
+    def update_location_thread(self):
+        """Background thread to update location from GPS"""
+        while self.connected_to_gps:
+            try:
+                current = gpsd.get_current()
+                self.location = [current.lat, current.lon]
+                if time.time() - self.last_update_time > settings.MAP_UPDATE_INTERVAL:
+                    self.update_map()
+            except Exception as e:
+                logger.error(f"Error updating location: {str(e)}")
+            
+            time.sleep(1)  # Update every second
+    
+    def add_detection(self, detection_type, lat=None, lon=None, confidence=0.0, timestamp=None, additional_data=None):
+        """
+        Add a detection point to the map
+        
+        Args:
+            detection_type: Type of detection (person, vehicle, item, etc.)
+            lat: Latitude (optional, uses current location if None)
+            lon: Longitude (optional, uses current location if None)
+            confidence: Detection confidence score
+            timestamp: Detection time (defaults to now)
+            additional_data: Dictionary with any additional data to store
+        """
+        # Use current location if lat/lon not provided
+        if lat is None or lon is None:
+            lat, lon = self.location
+        
+        # Use current time if timestamp not provided
+        if timestamp is None:
+            timestamp = datetime.now()
+        elif isinstance(timestamp, str):
+            # Convert string timestamp to datetime
+            timestamp = datetime.fromisoformat(timestamp)
+            
+        # Store the detection type for filtering
+        self.detection_types.add(detection_type)
+        
+        # Prepare detection data
+        detection = {
+            'type': detection_type,
+            'lat': lat,
+            'lon': lon,
+            'confidence': confidence,
+            'timestamp': timestamp.isoformat(),
+            'data': additional_data or {}
+        }
+        
+        # Add to detection points list
+        self.detection_points.append(detection)
+        
+        # Also add to historical data
+        self.detection_history.append(detection)
+        
+        # Keep detection history to a reasonable size (last 1000 detections)
+        if len(self.detection_history) > 1000:
+            self.detection_history = self.detection_history[-1000:]
+            
+        # Update the map if enough time has passed
+        if time.time() - self.last_update_time > settings.MAP_UPDATE_INTERVAL:
+            self.update_map()
+            
+        return True
+    
+    def update_map(self):
+        """Update the map with current location and all detection points"""
+        try:
+            # Clear previous markers
+            self.map = folium.Map(
+                location=self.location,
+                zoom_start=settings.MAP_ZOOM_LEVEL,
+                tiles=settings.MAP_TILE_PROVIDER
+            )
+            
+            # Add controls
+            Fullscreen().add_to(self.map)
+            MeasureControl().add_to(self.map)
+            
+            # Add current location marker
+            self.location_layer = folium.FeatureGroup(name="Current Location").add_to(self.map)
+            folium.Marker(
+                location=self.location,
+                popup="Current Location",
+                icon=folium.Icon(color="blue", icon="info-sign")
+            ).add_to(self.location_layer)
+            
+            # Create feature groups for different detection types
+            self.people_layer = folium.FeatureGroup(name="People").add_to(self.map)
+            self.vehicles_layer = folium.FeatureGroup(name="Vehicles").add_to(self.map)
+            self.items_layer = folium.FeatureGroup(name="Items").add_to(self.map)
+            self.alerts_layer = folium.FeatureGroup(name="Alerts", show=True).add_to(self.map)
+            
+            # Create a new marker cluster
+            self.marker_cluster = MarkerCluster(name="All Detections").add_to(self.map)
+            
+            # Create heatmap layer
+            self.heatmap_layer = folium.FeatureGroup(name="Detection Heatmap").add_to(self.map)
+            
+            # Create border layer
+            self.border_layer = folium.FeatureGroup(name="Border Lines").add_to(self.map)
+            
+            # Add borders if enabled
+            if hasattr(settings, 'MAP_BORDERS_ENABLED') and settings.MAP_BORDERS_ENABLED:
+                for border in settings.MAP_BORDERS:
+                    # Create a polyline for each border
+                    folium.PolyLine(
+                        locations=border['coordinates'],
+                        popup=border['name'],
+                        color=border['color'],
+                        weight=border['weight'],
+                        opacity=0.8,
+                        tooltip=f"Border: {border['name']}"
+                    ).add_to(self.border_layer)
+            
+            # Filter detection points based on active time filter
+            filtered_points = self.get_filtered_detections()
+            
+            # Prepare heatmap data
+            heatmap_data = []
+            
+            # Add markers for each detection point
+            for point in filtered_points:
+                # Get details
+                point_type = point['type']
+                lat = point['lat']
+                lon = point['lon']
+                confidence = point.get('confidence', 0.0)
+                timestamp = point.get('timestamp', datetime.now().isoformat())
+                
+                # Format datetime for display
+                try:
+                    dt = datetime.fromisoformat(timestamp)
+                    formatted_time = dt.strftime("%Y-%m-%d %H:%M:%S")
+                except:
+                    formatted_time = timestamp
+                
+                # Choose icon color based on detection type
+                if point_type in ['person']:
+                    icon_color = 'green'
+                    target_layer = self.people_layer
+                elif point_type in ['car', 'truck', 'motorcycle', 'bicycle']:
+                    icon_color = 'orange'
+                    target_layer = self.vehicles_layer
+                elif point_type in ['backpack', 'suitcase', 'handbag', 'cell phone', 'knife', 'gun']:
+                    icon_color = 'blue'
+                    target_layer = self.items_layer
+                else:
+                    icon_color = 'gray'
+                    target_layer = self.marker_cluster
+                
+                # Choose icon based on detection type
+                if point_type == 'person':
+                    icon_type = 'user'
+                elif point_type in ['car', 'truck', 'motorcycle']:
+                    icon_type = 'car'
+                elif point_type == 'bicycle':
+                    icon_type = 'bicycle'
+                elif point_type in ['knife', 'gun']:
+                    icon_type = 'warning-sign'
+                    icon_color = 'red'
+                    target_layer = self.alerts_layer
+                else:
+                    icon_type = 'map-marker'
+                
+                # Create detailed popup content
+                popup_content = f"""
+                <div style="font-family: Arial; min-width: 180px;">
+                    <h4 style="margin-bottom: 5px;">{point_type.title()}</h4>
+                    <p><strong>Time:</strong> {formatted_time}</p>
+                    <p><strong>Confidence:</strong> {confidence:.2f}</p>
+                    <p><strong>Location:</strong> {lat:.6f}, {lon:.6f}</p>
+                """
+                
+                # Add any additional data to popup
+                if 'data' in point and point['data']:
+                    popup_content += "<p><strong>Additional Data:</strong></p><ul>"
+                    for k, v in point['data'].items():
+                        popup_content += f"<li>{k}: {v}</li>"
+                    popup_content += "</ul>"
+                
+                popup_content += "</div>"
+                
+                # Create marker with popup
+                folium.Marker(
+                    location=[lat, lon],
+                    popup=folium.Popup(popup_content, max_width=300),
+                    tooltip=f"{point_type.title()} ({formatted_time})",
+                    icon=folium.Icon(color=icon_color, icon=icon_type, prefix='fa')
+                ).add_to(target_layer)
+                
+                # Add point to heatmap data
+                heatmap_data.append([lat, lon, min(confidence * 2, 1.0)])  # Weight by confidence
+            
+            # Add time-filtered control
+            self._add_time_filter_control()
+            
+            # Add detection type filter control
+            self._add_type_filter_control()
+            
+            # Add heatmap to the map if we have data and it's enabled
+            if heatmap_data and self.heatmap_enabled:
+                HeatMap(
+                    heatmap_data,
+                    radius=15,
+                    blur=10,
+                    gradient={0.2: 'blue', 0.4: 'lime', 0.6: 'yellow', 0.8: 'orange', 1: 'red'}
+                ).add_to(self.heatmap_layer)
+            
+            # Add layer control with expanded view
+            folium.LayerControl(collapsed=False).add_to(self.map)
+            
+            # Add legend
+            self._add_legend_control()
+            
+            # Save updated map
+            self.save_map()
+            
+            # Update last update time
+            self.last_update_time = time.time()
+            
+        except Exception as e:
+            print(f"Error updating map: {str(e)}")
+    
+    def _add_time_filter_control(self):
+        """Add time filter control to the map"""
+        # Create HTML for time filter control
+        time_filter_html = """
+        <div id="timeFilter" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; top: 10px; right: 10px; max-width: 200px;">
+            <h4 style="margin-top: 0;">Time Filter</h4>
+            <form id="timeFilterForm">
+                <div><input type="radio" name="timeFilter" value="last_hour" id="last_hour"> <label for="last_hour">Last Hour</label></div>
+                <div><input type="radio" name="timeFilter" value="last_day" id="last_day"> <label for="last_day">Last 24 Hours</label></div>
+                <div><input type="radio" name="timeFilter" value="last_week" id="last_week"> <label for="last_week">Last Week</label></div>
+                <div><input type="radio" name="timeFilter" value="all" id="all" checked> <label for="all">All Time</label></div>
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById('timeFilterForm').addEventListener('change', function(e) {
+                // In a real app, this would update via AJAX
+                console.log('Time filter changed to:', e.target.value);
+                // For demo, just reload the page with the filter
+                //window.location.href = window.location.pathname + '?timeFilter=' + e.target.value;
+            });
+        </script>
+        """
+        self.map.get_root().html.add_child(folium.Element(time_filter_html))
+    
+    def _add_type_filter_control(self):
+        """Add detection type filter control to the map"""
+        # Generate checkboxes for each detection type
+        checkboxes_html = ""
+        for detection_type in sorted(self.detection_types):
+            checkboxes_html += f"""
+            <div><input type="checkbox" name="typeFilter" value="{detection_type}" id="{detection_type}" checked> 
+            <label for="{detection_type}">{detection_type.title()}</label></div>
+            """
+        
+        # Create HTML for type filter control
+        type_filter_html = f"""
+        <div id="typeFilter" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; top: 180px; right: 10px; max-width: 200px;">
+            <h4 style="margin-top: 0;">Detection Types</h4>
+            <form id="typeFilterForm">
+                {checkboxes_html}
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById('typeFilterForm').addEventListener('change', function(e) {
+                // In a real app, this would update via AJAX
+                console.log('Type filter changed:', e.target.value, e.target.checked);
+            });
+        </script>
+        """
+        self.map.get_root().html.add_child(folium.Element(type_filter_html))
+    
+    def get_filtered_detections(self):
+        """Get detection points filtered by the active time filter and type filters"""
+        # Start with all points
+        filtered_points = self.detection_points.copy()
+        
+        # Apply time filter if active
+        if self.active_time_filter != 'all' and self.active_time_filter in self.time_filters:
+            cutoff_time = self.time_filters[self.active_time_filter]
+            if cutoff_time:
+                filtered_points = [
+                    p for p in filtered_points 
+                    if datetime.fromisoformat(p['timestamp']) >= cutoff_time
+                ]
+        
+        # Apply type filters if any are active
+        if self.detection_type_filters:
+            filtered_points = [
+                p for p in filtered_points
+                if p['type'] in self.detection_type_filters
+            ]
+            
+        return filtered_points
+    
+    def set_time_filter(self, filter_name):
+        """Set the active time filter"""
+        if filter_name in self.time_filters:
+            self.active_time_filter = filter_name
+            # Update the time filters with current timestamps
+            self.time_filters = {
+                'last_hour': datetime.now() - timedelta(hours=1),
+                'last_day': datetime.now() - timedelta(days=1),
+                'last_week': datetime.now() - timedelta(weeks=1),
+                'all': None
+            }
+            self.update_map()
+            return True
+        return False
+    
+    def toggle_detection_type_filter(self, detection_type, active=True):
+        """Toggle a detection type filter on or off"""
+        if active:
+            self.detection_type_filters.add(detection_type)
+        else:
+            self.detection_type_filters.discard(detection_type)
+        self.update_map()
+        return True
+    
+    def clear_all_filters(self):
+        """Clear all filters"""
+        self.active_time_filter = 'all'
+        self.detection_type_filters.clear()
+        self.update_map()
+        return True
+    
+    def save_map(self):
+        """Save the map to an HTML file"""
+        try:
+            # Ensure the output directory exists
+            os.makedirs(os.path.dirname(settings.MAP_OUTPUT_FILE), exist_ok=True)
+            
+            # Save the map
+            self.map.save(settings.MAP_OUTPUT_FILE)
+        except Exception as e:
+            print(f"Error saving map: {str(e)}")
+
+    # Add property for heatmap
+    @property
+    def heatmap_enabled(self):
+        """Get heatmap enabled state from settings if available"""
+        # Default to True if not set
+        return getattr(settings, 'HEATMAP_ENABLED', True)
