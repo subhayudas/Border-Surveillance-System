@@ -19,12 +19,35 @@ DISPLAY_HEIGHT = 480  # Fixed display height
 FPS = int(os.getenv("FPS", 20))
 
 # Detection settings
-DETECTION_THRESHOLD = float(os.getenv("DETECTION_THRESHOLD", 0.5))
+DETECTION_THRESHOLD = 0.65  # Default detection confidence threshold
 
-# Classes of interest for detection
+# Expect people in surveillance footage (used for adaptive thresholds)
+EXPECT_PEOPLE = True
+
+# Classes of interest for the surveillance system
 CLASSES_OF_INTEREST = [
-    'person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck',
-    'backpack', 'suitcase', 'knife', 'gun', 'rifle', 'drone'
+    'person', 
+    'car', 
+    'truck', 
+    'bicycle', 
+    'motorcycle', 
+    'bus', 
+    'backpack', 
+    'suitcase',
+    'bottle',
+    'knife',
+    'cell phone',
+    'umbrella',
+    'handbag',
+    'tie',
+    'frisbee',
+    'sports ball',
+    'rifle',
+    'handgun',
+    'shotgun',
+    'bazooka',
+    'weapon',
+    'grenade'
 ]
 
 # Border crossing detection settings
@@ -44,16 +67,16 @@ BORDER_LINES = [
 
 # Fence tampering detection settings
 FENCE_REGIONS = []  # List of polygons defining fence areas
-TAMPERING_SENSITIVITY = float(os.getenv("TAMPERING_SENSITIVITY", 0.3))
+TAMPERING_SENSITIVITY = 0.1
 
 # Behavior analysis settings
 SUSPICIOUS_BEHAVIORS = {
-    "loitering": {
-        "time_threshold": int(os.getenv("LOITERING_TIME", 30)),  # in seconds
-        "area_threshold": float(os.getenv("LOITERING_AREA", 0.2))  # in ratio of frame
+    'loitering': {
+        'time_threshold': 30.0,  # seconds
+        'area_threshold': 0.05,  # fraction of frame
     },
-    "crawling": {
-        "height_ratio_threshold": float(os.getenv("CRAWLING_RATIO", 0.5))  # height/width ratio
+    'crawling': {
+        'height_ratio_threshold': 0.8,  # height/width ratio
     }
 }
 
@@ -86,3 +109,40 @@ MAX_BATCH_SIZE = int(os.getenv("MAX_BATCH_SIZE", 1))
 # Logging settings
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 LOG_FILE = os.path.join(BASE_DIR, "logs", "surveillance.log")
+
+# Suspicious object definitions with confidence adjustments
+SUSPICIOUS_OBJECTS = {
+    'person': {
+        'priority': 'high',
+        'confidence_adjustment': 1.0,  # No adjustment for person class
+    },
+    'backpack': {
+        'priority': 'medium',
+        'confidence_adjustment': 0.9,  # Slightly reduce confidence for backpacks
+    },
+    # Weapon definitions with priority and confidence adjustments
+    'rifle': {
+        'priority': 'critical',
+        'confidence_adjustment': 1.2,  # Increase confidence for rifles
+    },
+    'handgun': {
+        'priority': 'critical',
+        'confidence_adjustment': 1.2,  # Increase confidence for handguns
+    },
+    'shotgun': {
+        'priority': 'critical', 
+        'confidence_adjustment': 1.2,  # Increase confidence for shotguns
+    },
+    'bazooka': {
+        'priority': 'critical',
+        'confidence_adjustment': 1.3,  # Significant increase for bazookas
+    }, 
+    'knife': {
+        'priority': 'high',
+        'confidence_adjustment': 1.1,  # Slight increase for knives
+    },
+    'grenade': {
+        'priority': 'critical',
+        'confidence_adjustment': 1.3,  # Significant increase for grenades
+    }
+}
