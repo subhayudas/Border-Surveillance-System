@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_ff8c48b5dc6ee24a3c0b8aa9311df666 {
+                #map_e2422f6294ee798ec386b51501c75ec7 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -46,14 +46,63 @@
 <body>
     
     
-            <div class="folium-map" id="map_ff8c48b5dc6ee24a3c0b8aa9311df666" ></div>
+        <div id="timeFilter" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; top: 10px; right: 10px; max-width: 200px;">
+            <h4 style="margin-top: 0;">Time Filter</h4>
+            <form id="timeFilterForm">
+                <div><input type="radio" name="timeFilter" value="last_hour" id="last_hour"> <label for="last_hour">Last Hour</label></div>
+                <div><input type="radio" name="timeFilter" value="last_day" id="last_day"> <label for="last_day">Last 24 Hours</label></div>
+                <div><input type="radio" name="timeFilter" value="last_week" id="last_week"> <label for="last_week">Last Week</label></div>
+                <div><input type="radio" name="timeFilter" value="all" id="all" checked> <label for="all">All Time</label></div>
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById('timeFilterForm').addEventListener('change', function(e) {
+                // In a real app, this would update via AJAX
+                console.log('Time filter changed to:', e.target.value);
+                // For demo, just reload the page with the filter
+                //window.location.href = window.location.pathname + '?timeFilter=' + e.target.value;
+            });
+        </script>
+        
+    
+        <div id="typeFilter" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; top: 180px; right: 10px; max-width: 200px;">
+            <h4 style="margin-top: 0;">Detection Types</h4>
+            <form id="typeFilterForm">
+                
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById('typeFilterForm').addEventListener('change', function(e) {
+                // In a real app, this would update via AJAX
+                console.log('Type filter changed:', e.target.value, e.target.checked);
+            });
+        </script>
+        
+    
+        <div id="mapLegend" style="position: absolute; z-index:9999; background-color:rgba(255,255,255,0.9); 
+                padding: 10px; border-radius: 5px; bottom: 30px; right: 10px; max-width: 250px;">
+            <h4 style="margin-top: 0;">Map Legend</h4>
+            <div><i style="background: #00FF00; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Person</div>
+            <div><i style="background: #FF6600; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Vehicle</div>
+            <div><i style="background: #0066FF; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Item</div>
+            <div><i style="background: #FF0000; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Alert</div>
+            <div><i style="background: blue; width: 15px; height: 15px; display: inline-block; border-radius: 50%;"></i> Current Location</div>
+            <div><i style="background: red; width: 20px; height: 3px; display: inline-block;"></i> Border</div>
+        </div>
+        
+    
+            <div class="folium-map" id="map_e2422f6294ee798ec386b51501c75ec7" ></div>
         
 </body>
 <script>
     
     
-            var map_ff8c48b5dc6ee24a3c0b8aa9311df666 = L.map(
-                "map_ff8c48b5dc6ee24a3c0b8aa9311df666",
+            var map_e2422f6294ee798ec386b51501c75ec7 = L.map(
+                "map_e2422f6294ee798ec386b51501c75ec7",
                 {
                     center: [37.7749, -122.4194],
                     crs: L.CRS.EPSG3857,
@@ -70,7 +119,7 @@
 
         
     
-            var tile_layer_b30ed3fd3ab3a9b40de817f745c639f2 = L.tileLayer(
+            var tile_layer_4b35378e95c399e8b63bb6042bb36136 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -87,7 +136,7 @@
             );
         
     
-            tile_layer_b30ed3fd3ab3a9b40de817f745c639f2.addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            tile_layer_4b35378e95c399e8b63bb6042bb36136.addTo(map_e2422f6294ee798ec386b51501c75ec7);
         
     
             L.control.fullscreen(
@@ -97,10 +146,10 @@
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            ).addTo(map_e2422f6294ee798ec386b51501c75ec7);
         
     
-            var measure_control_32828044e0e57e5e9e411903b9763192 = new L.Control.Measure(
+            var measure_control_1f51b65408d9a270dc05af22465bc024 = new L.Control.Measure(
                 {
   "position": "topright",
   "primaryLengthUnit": "meters",
@@ -108,7 +157,7 @@
   "primaryAreaUnit": "sqmeters",
   "secondaryAreaUnit": "acres",
 });
-            map_ff8c48b5dc6ee24a3c0b8aa9311df666.addControl(measure_control_32828044e0e57e5e9e411903b9763192);
+            map_e2422f6294ee798ec386b51501c75ec7.addControl(measure_control_1f51b65408d9a270dc05af22465bc024);
 
             // Workaround for using this plugin with Leaflet>=1.8.0
             // https://github.com/ljagis/leaflet-measure/issues/171
@@ -127,52 +176,140 @@
 
         
     
-            var marker_cluster_4a6790f4d41e16ced900d95023a6f3b6 = L.markerClusterGroup(
+            var feature_group_15e3baaa0d864362e99323ed43a35bf9 = L.featureGroup(
                 {
 }
             );
         
     
-            marker_cluster_4a6790f4d41e16ced900d95023a6f3b6.addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            var marker_8fc9614e095b0eb9caf06f0a0f0031eb = L.marker(
+                [37.7749, -122.4194],
+                {
+}
+            ).addTo(feature_group_15e3baaa0d864362e99323ed43a35bf9);
         
     
-            var feature_group_c5c66d53b815d1a27ce23150b73af64a = L.featureGroup(
+            var icon_7212876d02478a87f3a1674f8222edbb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84c76a7d77968f191a4a54f515138120 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34cd45e7d6ff0bf2784354380095b654 = $(`<div id="html_34cd45e7d6ff0bf2784354380095b654" style="width: 100.0%; height: 100.0%;">Current Location</div>`)[0];
+                popup_84c76a7d77968f191a4a54f515138120.setContent(html_34cd45e7d6ff0bf2784354380095b654);
+            
+        
+
+        marker_8fc9614e095b0eb9caf06f0a0f0031eb.bindPopup(popup_84c76a7d77968f191a4a54f515138120)
+        ;
+
+        
+    
+    
+                marker_8fc9614e095b0eb9caf06f0a0f0031eb.setIcon(icon_7212876d02478a87f3a1674f8222edbb);
+            
+    
+            feature_group_15e3baaa0d864362e99323ed43a35bf9.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var feature_group_eab0d6e963259f903a0a960e800aab62 = L.featureGroup(
                 {
 }
             );
         
     
-            feature_group_c5c66d53b815d1a27ce23150b73af64a.addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            feature_group_eab0d6e963259f903a0a960e800aab62.addTo(map_e2422f6294ee798ec386b51501c75ec7);
         
     
-            var feature_group_f0d43cbd1f6f5d17d62146f45dda9847 = L.featureGroup(
+            var feature_group_27527d62ab6ee98596976e07274a2daf = L.featureGroup(
                 {
 }
             );
         
     
-            feature_group_f0d43cbd1f6f5d17d62146f45dda9847.addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            feature_group_27527d62ab6ee98596976e07274a2daf.addTo(map_e2422f6294ee798ec386b51501c75ec7);
         
     
-            var layer_control_02660dd576ea6a7e4a5b23d25043bd18_layers = {
+            var feature_group_bf6b41b891f468028563d6c9e71396db = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_bf6b41b891f468028563d6c9e71396db.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var feature_group_f7c6f19bc5a5307b9a0a1a7ea8ec1b5d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_f7c6f19bc5a5307b9a0a1a7ea8ec1b5d.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var marker_cluster_0f7e6796b6e6d8a7bf4fb7df0ea5f255 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            marker_cluster_0f7e6796b6e6d8a7bf4fb7df0ea5f255.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var feature_group_27c560f4bc813e1aa4e997d16ec157d0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_27c560f4bc813e1aa4e997d16ec157d0.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var feature_group_9d9bc6902f09ee1858c19acb52fbbae0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_9d9bc6902f09ee1858c19acb52fbbae0.addTo(map_e2422f6294ee798ec386b51501c75ec7);
+        
+    
+            var layer_control_60a710c43c97bb800619a0e82795bbb5_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_b30ed3fd3ab3a9b40de817f745c639f2,
+                    "openstreetmap" : tile_layer_4b35378e95c399e8b63bb6042bb36136,
                 },
                 overlays :  {
-                    "macro_element_4a6790f4d41e16ced900d95023a6f3b6" : marker_cluster_4a6790f4d41e16ced900d95023a6f3b6,
-                    "Current Location" : feature_group_c5c66d53b815d1a27ce23150b73af64a,
-                    "Detection Heatmap" : feature_group_f0d43cbd1f6f5d17d62146f45dda9847,
+                    "Current Location" : feature_group_15e3baaa0d864362e99323ed43a35bf9,
+                    "People" : feature_group_eab0d6e963259f903a0a960e800aab62,
+                    "Vehicles" : feature_group_27527d62ab6ee98596976e07274a2daf,
+                    "Items" : feature_group_bf6b41b891f468028563d6c9e71396db,
+                    "Alerts" : feature_group_f7c6f19bc5a5307b9a0a1a7ea8ec1b5d,
+                    "All Detections" : marker_cluster_0f7e6796b6e6d8a7bf4fb7df0ea5f255,
+                    "Detection Heatmap" : feature_group_27c560f4bc813e1aa4e997d16ec157d0,
+                    "Border Lines" : feature_group_9d9bc6902f09ee1858c19acb52fbbae0,
                 },
             };
-            let layer_control_02660dd576ea6a7e4a5b23d25043bd18 = L.control.layers(
-                layer_control_02660dd576ea6a7e4a5b23d25043bd18_layers.base_layers,
-                layer_control_02660dd576ea6a7e4a5b23d25043bd18_layers.overlays,
+            let layer_control_60a710c43c97bb800619a0e82795bbb5 = L.control.layers(
+                layer_control_60a710c43c97bb800619a0e82795bbb5_layers.base_layers,
+                layer_control_60a710c43c97bb800619a0e82795bbb5_layers.overlays,
                 {
   "position": "topright",
-  "collapsed": true,
+  "collapsed": false,
   "autoZIndex": true,
 }
-            ).addTo(map_ff8c48b5dc6ee24a3c0b8aa9311df666);
+            ).addTo(map_e2422f6294ee798ec386b51501c75ec7);
 
         
 </script>

@@ -746,7 +746,10 @@ class GeoMapVisualizer:
                 <div><input type="radio" name="timeFilter" value="all" id="all" checked> <label for="all">All Time</label></div>
             </form>
         </div>
+        """
         
+        # Create JavaScript separately to avoid comment syntax issues
+        time_js_script = """
         <script>
             document.getElementById('timeFilterForm').addEventListener('change', function(e) {
                 // In a real app, this would update via AJAX
@@ -756,7 +759,10 @@ class GeoMapVisualizer:
             });
         </script>
         """
-        self.map.get_root().html.add_child(folium.Element(time_filter_html))
+        
+        # Combine HTML and JavaScript
+        full_time_html = time_filter_html + time_js_script
+        self.map.get_root().html.add_child(folium.Element(full_time_html))
     
     def _add_type_filter_control(self):
         """Add detection type filter control to the map"""
@@ -777,7 +783,10 @@ class GeoMapVisualizer:
                 {checkboxes_html}
             </form>
         </div>
+        """
         
+        # Create JavaScript separately to avoid comment syntax issues
+        js_script = """
         <script>
             document.getElementById('typeFilterForm').addEventListener('change', function(e) {
                 // In a real app, this would update via AJAX
@@ -785,7 +794,10 @@ class GeoMapVisualizer:
             });
         </script>
         """
-        self.map.get_root().html.add_child(folium.Element(type_filter_html))
+        
+        # Combine HTML and JavaScript
+        full_html = type_filter_html + js_script
+        self.map.get_root().html.add_child(folium.Element(full_html))
     
     def get_filtered_detections(self):
         """Get detection points filtered by the active time filter and type filters"""

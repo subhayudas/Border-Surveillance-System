@@ -843,3 +843,6 @@
 2025-04-05 16:26:22,722 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
 2025-04-05 16:27:08,778 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
 2025-04-05 16:27:09,486 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:38:00,290 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:39:38,965 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
+2025-04-05 16:39:39,729 - BorderSurveillance - ERROR - Failed to connect to MQTT broker: [Errno 61] Connection refused
